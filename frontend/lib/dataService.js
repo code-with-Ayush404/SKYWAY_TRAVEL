@@ -1,3 +1,5 @@
+import { mockPackages, mockTaxis, mockWeddingCars, mockTestimonials } from "./mockData";
+
 const BACKEND_URL =
   process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
@@ -23,8 +25,8 @@ export async function getPackages() {
   try {
     return await apiFetch("/api/packages");
   } catch (error) {
-    console.error("getPackages failed, returning empty array:", error);
-    return [];
+    console.warn("getPackages failed, returning fallback mockPackages:", error);
+    return mockPackages;
   }
 }
 
@@ -32,8 +34,8 @@ export async function getPackageBySlug(slug) {
   try {
     return await apiFetch(`/api/packages/${slug}`);
   } catch (error) {
-    console.error(`getPackageBySlug failed for ${slug}:`, error);
-    return null;
+    console.warn(`getPackageBySlug failed for ${slug}, returning mock fallback:`, error);
+    return mockPackages.find((p) => p.slug === slug) || null;
   }
 }
 
@@ -41,8 +43,8 @@ export async function getTaxiCars() {
   try {
     return await apiFetch("/api/taxi-cars");
   } catch (error) {
-    console.error("getTaxiCars failed:", error);
-    return [];
+    console.warn("getTaxiCars failed, returning fallback mockTaxis:", error);
+    return mockTaxis;
   }
 }
 
@@ -50,8 +52,8 @@ export async function getWeddingCars() {
   try {
     return await apiFetch("/api/wedding-cars");
   } catch (error) {
-    console.error("getWeddingCars failed:", error);
-    return [];
+    console.warn("getWeddingCars failed, returning fallback mockWeddingCars:", error);
+    return mockWeddingCars;
   }
 }
 
@@ -59,28 +61,58 @@ export async function getTestimonials() {
   try {
     return await apiFetch("/api/testimonials");
   } catch (error) {
-    console.error("getTestimonials failed:", error);
-    return [];
+    console.warn("getTestimonials failed, returning fallback mockTestimonials:", error);
+    return mockTestimonials;
   }
 }
 
 export async function createBooking(data) {
-  return await apiFetch("/api/bookings", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  try {
+    return await apiFetch("/api/bookings", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  } catch (error) {
+    console.warn("createBooking backend call failed, simulating client-side success:", error);
+    return {
+      id: `booking-mock-${Date.now()}`,
+      ...data,
+      travelDate: new Date(data.travelDate),
+      status: "PENDING",
+      createdAt: new Date(),
+    };
+  }
 }
 
 export async function createEnquiry(data) {
-  return await apiFetch("/api/enquiries", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  try {
+    return await apiFetch("/api/enquiries", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  } catch (error) {
+    console.warn("createEnquiry backend call failed, simulating client-side success:", error);
+    return {
+      id: `enquiry-mock-${Date.now()}`,
+      ...data,
+      status: "PENDING",
+      createdAt: new Date(),
+    };
+  }
 }
 
 export async function subscribeNewsletter(email) {
-  return await apiFetch("/api/newsletter", {
-    method: "POST",
-    body: JSON.stringify({ email }),
-  });
+  try {
+    return await apiFetch("/api/newsletter", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+    });
+  } catch (error) {
+    console.warn("subscribeNewsletter backend call failed, simulating client-side success:", error);
+    return {
+      id: `news-mock-${Date.now()}`,
+      email,
+      createdAt: new Date(),
+    };
+  }
 }

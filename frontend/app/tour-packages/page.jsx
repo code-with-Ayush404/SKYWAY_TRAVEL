@@ -10,6 +10,7 @@ import {
   Compass,
 } from "lucide-react";
 import PackageCard from "@/components/packages/PackageCard";
+import { mockPackages } from "@/lib/mockData";
 
 function TourPackagesContent() {
   const searchParams = useSearchParams();
@@ -37,23 +38,59 @@ function TourPackagesContent() {
   // Fetch packages based on filter states
   const fetchFilteredPackages = async () => {
     setIsLoading(true);
-    try {
-      const queryParams = new URLSearchParams({
-        search: searchQuery,
-        category: selectedCategory,
-        minPrice: "0",
-        maxPrice: maxPrice.toString(),
-        sort: sortBy,
-      });
+    const queryParams = new URLSearchParams({
+      search: searchQuery,
+      category: selectedCategory,
+      minPrice: "0",
+      maxPrice: maxPrice.toString(),
+      sort: sortBy,
+    });
 
+    try {
       const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
       const response = await fetch(`${backendUrl}/api/packages?${queryParams.toString()}`);
       if (response.ok) {
         const data = await response.json();
         setPackages(data);
+        setIsLoading(false);
+        return;
       }
+      throw new Error(`HTTP error! status: ${response.status}`);
     } catch (error) {
-      console.error("Failed to fetch packages:", error);
+      console.warn("Failed to fetch packages from backend, falling back to client-side filtering:", error);
+      
+      // Local client-side filtering matching the backend logic
+      let localPackages = [...mockPackages];
+      
+      const search = searchQuery.toLowerCase().trim();
+      if (search) {
+        localPackages = localPackages.filter(
+          (p) =>
+            p.title.toLowerCase().includes(search) ||
+            p.location.toLowerCase().includes(search) ||
+            (p.tags && p.tags.some((t) => t.toLowerCase().includes(search)))
+        );
+      }
+
+      if (selectedCategory !== "All") {
+        localPackages = localPackages.filter(
+          (p) => p.category.toLowerCase() === selectedCategory.toLowerCase()
+        );
+      }
+
+      localPackages = localPackages.filter(
+        (p) => p.currentPrice >= 0 && p.currentPrice <= maxPrice
+      );
+
+      if (sortBy === "Price Low-High") {
+        localPackages.sort((a, b) => a.currentPrice - b.currentPrice);
+      } else if (sortBy === "Price High-Low") {
+        localPackages.sort((a, b) => b.currentPrice - a.currentPrice);
+      } else if (sortBy === "Rating") {
+        localPackages.sort((a, b) => b.rating - a.rating);
+      }
+
+      setPackages(localPackages);
     } finally {
       setIsLoading(false);
     }
