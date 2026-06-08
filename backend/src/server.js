@@ -15,6 +15,7 @@ import {
   createContactMessage, 
   subscribeNewsletter 
 } from "./lib/dataService.js";
+import adminRoutes from "./routes/admin.js";
 
 dotenv.config();
 
@@ -292,6 +293,9 @@ app.get("/api/testimonials", async (req, res) => {
     return res.status(500).json({ error: "Failed to fetch testimonials" });
   }
 });
+
+// Admin Routes - Tour & Vehicle Management
+app.use("/api/admin", adminRoutes);
 
 // Start Express Server
 app.listen(PORT, () => {
