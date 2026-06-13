@@ -178,7 +178,7 @@ function AuthContent() {
 
           <p className="text-sm text-text-muted">
             {activeTab === "signup"
-              ? "Join Starline Travel to book premium tours & rides."
+              ? "Join Skyway Travel to book premium tours & rides."
               : "Login to access your account."}
           </p>
         </div>
@@ -258,7 +258,7 @@ function AuthContent() {
             <div className="text-xs text-text-muted flex flex-col gap-1 text-center">
               <span>Admin Demo:</span>
               <span className="font-semibold text-primary-teal">
-                admin@starlinetravel.in / admin123
+                admin@skywaytravel.in / admin123
               </span>
             </div>
           )}

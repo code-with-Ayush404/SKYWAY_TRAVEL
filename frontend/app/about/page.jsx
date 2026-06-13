@@ -5,7 +5,7 @@ const team = [
     name: "Aditya Verma",
     role: "Founder & CEO",
     initials: "AV",
-    bio: "Over 12 years in travel management. Started Starline with a single vehicle and a vision to redefine tourism across the subcontinent.",
+    bio: "Over 12 years in travel management. Started Skyway with a single vehicle and a vision to redefine tourism across the subcontinent.",
   },
   {
     name: "Sneha Kapoor",
@@ -72,7 +72,7 @@ export default function AboutPage() {
 
           <div className="text-sm text-text-muted flex flex-col gap-4 leading-relaxed font-light">
             <p>
-              Founded in 2018, Starline Travel began with a single Toyota Innova
+              Founded in 2018, Skyway Travel began with a single Toyota Innova
               and a passion for showing the authentic beauty of northern India.
               We realized that travelers wanted more than just taxi rides — they
               sought curated, localized experiences, seamless route
@@ -94,7 +94,7 @@ export default function AboutPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=800"
-            alt="Starline travel caravan mountain view"
+            alt="Skyway travel caravan mountain view"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
 
@@ -161,7 +161,7 @@ export default function AboutPage() {
         <div className="flex flex-col items-start gap-2 mb-12 border-b border-border-soft pb-6">
           <span className="small-caps-label">MEET OUR LEADER TEAM</span>
           <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary-teal">
-            The Minds Behind Starline
+            The Minds Behind Skyway
           </h2>
         </div>
 

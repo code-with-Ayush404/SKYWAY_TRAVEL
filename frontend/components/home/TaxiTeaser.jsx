@@ -82,7 +82,7 @@ export default function TaxiTeaser() {
 
   const getWhatsAppLink = () => {
     const text =
-      `Hi Starline Travel, I would like to book a transfer:\n\n` +
+      `Hi Skyway Travel, I would like to book a transfer:\n\n` +
       `Vehicle: ${activeVehicle.name} (${activeVehicle.icon})\n` +
       `Pickup: ${pickup}\n` +
       `Dropoff: ${drop}\n` +
@@ -117,11 +117,11 @@ export default function TaxiTeaser() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800"
-              alt="Starline Taxi fleet booking"
+              alt="Skyway Taxi fleet booking"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-teal/80 via-transparent to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-linear-to-t from-primary-teal/80 via-transparent to-transparent opacity-80" />
             <div className="absolute bottom-6 left-6 right-6 text-white flex gap-6 text-left">
               <div className="flex items-center gap-2 text-xs">
                 <ShieldCheck className="h-4.5 w-4.5 text-accent-gold" />

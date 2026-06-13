@@ -20,17 +20,17 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Starline Travel - Premium Curated Travel & Booking Platform",
+  title: "Skyway Travel - Premium Curated Travel & Booking Platform",
   description:
     "Curated tour packages, taxi/car rentals, and luxury wedding car rentals across India & Nepal.",
   metadataBase: new URL("http://localhost:3000"),
   openGraph: {
-    title: "Starline Travel - Premium Curated Travel & Booking Platform",
+    title: "Skyway Travel - Premium Curated Travel & Booking Platform",
     description:
       "Curated tour packages, taxi/car rentals, and luxury wedding car rentals across India & Nepal.",
     type: "website",
     locale: "en_US",
-    siteName: "Starline Travel",
+    siteName: "Skyway Travel",
   },
 };
 

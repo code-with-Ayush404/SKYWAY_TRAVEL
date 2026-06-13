@@ -21,7 +21,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const JWT_SECRET = process.env.JWT_SECRET || "super-secret-starline-jwt-key";
+const JWT_SECRET = process.env.JWT_SECRET || "super-secret-skyway-jwt-key";
 
 // Middlewares
 app.use(cors());
@@ -32,7 +32,7 @@ connectDB();
 
 // Test root endpoint
 app.get("/", (req, res) => {
-  res.json({ message: "Starline Travel API Server is running." });
+  res.json({ message: "Skyway Travel API Server is running." });
 });
 
 // Authentication: Login endpoint (returns user + JWT token)
@@ -68,15 +68,15 @@ app.post("/api/auth/login", async (req, res) => {
   }
 
   // Fallback demo credentials
-  if (email === "admin@starlinetravel.in" && password === "admin123") {
+  if (email === "admin@skywaytravel.in" && password === "admin123") {
     const token = jwt.sign({ id: "admin-mock-id", email, role: "ADMIN" }, JWT_SECRET, { expiresIn: "7d" });
     return res.json({
-      user: { id: "admin-mock-id", email, name: "Starline Admin", role: "ADMIN" },
+      user: { id: "admin-mock-id", email, name: "Skyway Admin", role: "ADMIN" },
       token
     });
   }
 
-  if (email === "traveler@starlinetravel.in" && password === "user123") {
+  if (email === "traveler@skywaytravel.in" && password === "user123") {
     const token = jwt.sign({ id: "user-mock-id", email, role: "USER" }, JWT_SECRET, { expiresIn: "7d" });
     return res.json({
       user: { id: "user-mock-id", email, name: "Happy Traveler", role: "USER" },
@@ -228,8 +228,8 @@ app.post("/api/bookings", async (req, res) => {
     // Simulate Nodemailer email console alert
     console.log(`\n======================================================
 [EMAIL NOTIFICATION] - NEW BOOKING CONFIRMED
-To: admin@starlinetravel.in, ${booking.email}
-Subject: Starline Travel Booking Request Receipt - #${booking.id}
+To: admin@skywaytravel.in, ${booking.email}
+Subject: Skyway Travel Booking Request Receipt - #${booking.id}
 Dear ${booking.name},
 Your request for tour package booking has been logged successfully.
 Booking Details:
@@ -253,7 +253,7 @@ app.post("/api/enquiries", async (req, res) => {
     // Simulate Nodemailer email console alert
     console.log(`\n======================================================
 [EMAIL NOTIFICATION] - NEW CONTACT ENQUIRY RECEIVED
-To: enquiries@starlinetravel.in
+To: enquiries@skywaytravel.in
 Subject: Contact Enquiry from ${msg.fullName}
 Details:
 - Phone: ${msg.phone}

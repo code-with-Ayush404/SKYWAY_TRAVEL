@@ -4,7 +4,7 @@ import path from 'path';
 
 dotenv.config({ path: path.resolve('backend/.env') });
 
-const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/starline_travel";
+const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/skyway_travel";
 console.log('Connecting to:', mongoUri);
 
 try {

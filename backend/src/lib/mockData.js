@@ -1812,6 +1812,364 @@ export const mockPackages = [
       }
     ],
     "isFeatured": true
+  },
+  {
+    "id": "pkg-custom-kathmandu-3d",
+    "slug": "best-3-days-kathmandu-tour",
+    "title": "Best 3 Days Kathmandu Tour",
+    "location": "Kathmandu, Nepal",
+    "category": "Cultural",
+    "badge": "Popular",
+    "discount": "10% OFF",
+    "rating": 4.8,
+    "ratingCount": 120,
+    "originalPrice": 499,
+    "currentPrice": 399,
+    "days": 3,
+    "nights": 2,
+    "groupSize": "2-10 people",
+    "tags": ["Heritage", "Temple Visit", "Scenic Views"],
+    "inclusions": [
+      "3-star hotel stay",
+      "Airport pickup & drop",
+      "Private vehicle for sightseeing",
+      "English speaking guide",
+      "Daily breakfast"
+    ],
+    "exclusions": [
+      "International flights",
+      "Nepal visa fee",
+      "Lunch & dinner",
+      "Entrance fees to monuments"
+    ],
+    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200",
+    "gallery": [
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600",
+      "https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=600"
+    ],
+    "dayWisePlan": [
+      {
+        "day": 1,
+        "title": "Arrival in Kathmandu & Heritage Walk",
+        "description": "Arrive at Tribhuvan International Airport. Meet our representative and transfer to your hotel. Later, visit Kathmandu Durbar Square.",
+        "activities": ["Airport transfer", "Hotel check-in", "Kathmandu Durbar Square tour"],
+        "meals": "Dinner Included",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600"
+      },
+      {
+        "day": 2,
+        "title": "Kathmandu Valley Sightseeing",
+        "description": "Explore the famous pilgrimage sites and stupas including Pashupatinath Temple, Boudhanath Stupa, and Swayambhunath (Monkey Temple).",
+        "activities": ["Visit Pashupatinath Temple", "Explore Boudhanath Stupa", "Swayambhunath sightseeing"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=600"
+      },
+      {
+        "day": 3,
+        "title": "Departure from Kathmandu",
+        "description": "Enjoy breakfast at the hotel, complete check-out, and transfer to the airport for your flight back home.",
+        "activities": ["Leisure time", "Hotel check-out", "Airport drop-off"],
+        "meals": "Breakfast Included",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600"
+      }
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "pkg-custom-pokhara-3d",
+    "slug": "best-3-days-pokhara-tour",
+    "title": "Best 3 Days Pokhara Tour",
+    "location": "Pokhara, Nepal",
+    "category": "Adventure",
+    "badge": "Best Seller",
+    "discount": "15% OFF",
+    "rating": 4.9,
+    "ratingCount": 185,
+    "originalPrice": 549,
+    "currentPrice": 449,
+    "days": 3,
+    "nights": 2,
+    "groupSize": "2-8 people",
+    "tags": ["Lakes", "Mountain Views", "Boating"],
+    "inclusions": [
+      "Premium hotel stay in Pokhara",
+      "Private vehicle for transfers & sightseeing",
+      "Sarangkot sunrise tour",
+      "Boating at Phewa Lake",
+      "Daily breakfast"
+    ],
+    "exclusions": [
+      "Flights & travel insurance",
+      "Personal expenses",
+      "Lunch & dinner",
+      "Tips for driver/guide"
+    ],
+    "image": "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=1200",
+    "gallery": [
+      "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=600",
+      "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=600"
+    ],
+    "dayWisePlan": [
+      {
+        "day": 1,
+        "title": "Arrival in Pokhara & Phewa Lake Boating",
+        "description": "Arrive in Pokhara and check in to your hotel. In the evening, enjoy a peaceful boat ride on Phewa Lake with stunning views of Mount Fishtail.",
+        "activities": ["Hotel check-in", "Phewa Lake boating", "Lakeside walking tour"],
+        "meals": "Dinner Included",
+        "image": "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=600"
+      },
+      {
+        "day": 2,
+        "title": "Sarangkot Sunrise & Pokhara Sightseeing",
+        "description": "Drive early morning to Sarangkot for a spectacular sunrise over the Annapurna Range. Later, tour Davis Falls, Gupteshwor Cave, and International Mountain Museum.",
+        "activities": ["Sarangkot Sunrise", "Davis Falls visit", "Gupteshwor Cave exploration"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=600"
+      },
+      {
+        "day": 3,
+        "title": "Departure from Pokhara",
+        "description": "Check out from hotel and transfer to the airport or bus station for departure.",
+        "activities": ["Hotel check-out", "Transfer to departure point"],
+        "meals": "Breakfast Included",
+        "image": "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=600"
+      }
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "pkg-custom-manakamna-4d",
+    "slug": "best-4-day-manakamna-tour",
+    "title": "Best 4 Day Manakamna Tour",
+    "location": "Gorkha, Nepal",
+    "category": "Cultural",
+    "badge": "Popular",
+    "discount": "12% OFF",
+    "rating": 4.7,
+    "ratingCount": 98,
+    "originalPrice": 599,
+    "currentPrice": 499,
+    "days": 4,
+    "nights": 3,
+    "groupSize": "4-15 people",
+    "tags": ["Cable Car", "Temple", "Hills"],
+    "inclusions": [
+      "3-star accommodation",
+      "AC vehicle for transfer from border/airport",
+      "Manakamna Cable Car tickets",
+      "Dedicated tour guide",
+      "Daily breakfast & dinner"
+    ],
+    "exclusions": [
+      "Lunch & refreshments",
+      "Personal travel insurance",
+      "Pooja materials",
+      "Any extra activities"
+    ],
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200",
+    "gallery": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600",
+      "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600"
+    ],
+    "dayWisePlan": [
+      {
+        "day": 1,
+        "title": "Pick-up and Drive to Manakamna Base",
+        "description": "Pick up from Gorakhpur or Sonauli border and drive to Kurintar (Manakamna base). Check in at hotel and prepare for next day's visit.",
+        "activities": ["Scenic drive along Trishuli River", "Hotel check-in", "Evening relaxation"],
+        "meals": "Dinner Included",
+        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600"
+      },
+      {
+        "day": 2,
+        "title": "Cable Car Ride & Manakamna Temple Darshan",
+        "description": "Take the scenic cable car ride to Manakamna Temple. Perform pooja and enjoy the breathtaking panoramic views of the surrounding hills.",
+        "activities": ["Cable Car ride", "Temple darshan & prayers", "Photography of mountain ranges"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600"
+      },
+      {
+        "day": 3,
+        "title": "Drive to Kathmandu or Pokhara (Optional Extension)",
+        "description": "After breakfast, transfer to Kathmandu or Pokhara for a half-day tour of the city and leisure evening.",
+        "activities": ["Drive to city", "Sightseeing at Lakeside/Thamel", "Shopping"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600"
+      },
+      {
+        "day": 4,
+        "title": "Departure Transfer",
+        "description": "Complete check-out and transfer back to Gorakhpur or Kathmandu airport.",
+        "activities": ["Hotel check-out", "Return drive / Airport transfer"],
+        "meals": "Breakfast Included",
+        "image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600"
+      }
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "pkg-custom-kathmandu-5d",
+    "slug": "best-5-day-katmandu-tour",
+    "title": "Best 5 Day Katmandu Tour",
+    "location": "Kathmandu, Nepal",
+    "category": "Cultural",
+    "badge": "Top Rated",
+    "discount": "15% OFF",
+    "rating": 4.85,
+    "ratingCount": 142,
+    "originalPrice": 699,
+    "currentPrice": 599,
+    "days": 5,
+    "nights": 4,
+    "groupSize": "2-12 people",
+    "tags": ["Bhaktapur", "Nagarkot Sunrise", "Stupas"],
+    "inclusions": [
+      "4 nights hotel accommodation (Nagarkot & Kathmandu)",
+      "Private AC transport for full tour",
+      "Nagarkot sunrise trip",
+      "Professional tour guide",
+      "Daily breakfast & dinner"
+    ],
+    "exclusions": [
+      "International flights",
+      "Monument entry fees",
+      "Lunch & beverages",
+      "Tips and personal expenses"
+    ],
+    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200",
+    "gallery": [
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600",
+      "https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=600"
+    ],
+    "dayWisePlan": [
+      {
+        "day": 1,
+        "title": "Arrival in Kathmandu & Transfer",
+        "description": "Welcome at airport and transfer to hotel. Rest of the day is free for leisure.",
+        "activities": ["Airport pickup", "Hotel registration", "Evening market walk"],
+        "meals": "Dinner Included",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600"
+      },
+      {
+        "day": 2,
+        "title": "Kathmandu Durbar Square & Swayambhunath",
+        "description": "Guided tour of the historical Durbar Square followed by a visit to the hilltop Monkey Temple.",
+        "activities": ["Sightseeing at Durbar Square", "Walk up Swayambhunath steps"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=600"
+      },
+      {
+        "day": 3,
+        "title": "Pashupatinath, Boudhanath & Drive to Nagarkot",
+        "description": "Visit the holy Hindu shrine of Pashupatinath and the massive Boudhanath Stupa, then drive up to Nagarkot hill station.",
+        "activities": ["Darshan at Pashupatinath", "Kora around Boudhanath", "Scenic drive to Nagarkot"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600"
+      },
+      {
+        "day": 4,
+        "title": "Nagarkot Sunrise & Bhaktapur Durbar Square",
+        "description": "Witness a beautiful sunrise over the Himalayas from Nagarkot. Later, drive back via Bhaktapur, the city of devotees, to see its ancient woodcarvings and pottery.",
+        "activities": ["Nagarkot Sunrise", "Bhaktapur sightseeing", "Transfer back to Kathmandu"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=600"
+      },
+      {
+        "day": 5,
+        "title": "Departure",
+        "description": "Transfer to Tribhuvan International Airport for your departure flight.",
+        "activities": ["Hotel check-out", "Airport drop"],
+        "meals": "Breakfast Included",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600"
+      }
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "pkg-custom-nepal-6d",
+    "slug": "best-6-day-nepal-tour",
+    "title": "Best 6 Day Nepal Tour",
+    "location": "Nepal",
+    "category": "Adventure",
+    "badge": "Trending",
+    "discount": "15% OFF",
+    "rating": 4.92,
+    "ratingCount": 215,
+    "originalPrice": 899,
+    "currentPrice": 749,
+    "days": 6,
+    "nights": 5,
+    "groupSize": "2-10 people",
+    "tags": ["Kathmandu", "Pokhara", "Chitwan Safaris"],
+    "inclusions": [
+      "5 nights luxury accommodation",
+      "Private AC SUV for the entire tour",
+      "Chitwan National Park jungle safari",
+      "All park permits & safari fees",
+      "Daily breakfast & dinner"
+    ],
+    "exclusions": [
+      "International airfare",
+      "Lunch & drinks",
+      "Personal expenses",
+      "Tips"
+    ],
+    "image": "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=1200",
+    "gallery": [
+      "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=600",
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600"
+    ],
+    "dayWisePlan": [
+      {
+        "day": 1,
+        "title": "Arrival in Kathmandu & City Overview",
+        "description": "Meet and greet at airport, and check-in to your hotel. Evening tour of local markets.",
+        "activities": ["Airport transfer", "Check-in", "Leisure walk in Thamel"],
+        "meals": "Dinner Included",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600"
+      },
+      {
+        "day": 2,
+        "title": "Drive to Chitwan National Park",
+        "description": "Drive to Chitwan National Park. Check in to the jungle lodge. Enjoy a traditional Tharu cultural dance show in the evening.",
+        "activities": ["Scenic drive", "Lodge check-in", "Cultural program"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=600"
+      },
+      {
+        "day": 3,
+        "title": "Jungle Safari & Activities in Chitwan",
+        "description": "Enjoy full-day wilderness activities: jeep safari, canoe ride on Rapti River to spot crocodiles, and a visit to the elephant breeding center.",
+        "activities": ["Jeep Safari", "Canoeing", "Bird watching"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=600"
+      },
+      {
+        "day": 4,
+        "title": "Drive to Pokhara & Phewa Lake Boating",
+        "description": "Drive from Chitwan to Pokhara. In the afternoon, enjoy boating on Phewa Lake under the reflection of Mount Machhapuchhre.",
+        "activities": ["Scenic drive to Pokhara", "Phewa Lake boat trip"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=600"
+      },
+      {
+        "day": 5,
+        "title": "Pokhara Sightseeing & Drive to Kathmandu",
+        "description": "Early morning sunrise at Sarangkot, followed by Davis Falls, and then drive back to Kathmandu.",
+        "activities": ["Sarangkot sunrise tour", "Davis Falls visit", "Drive back to Kathmandu"],
+        "meals": "Breakfast & Dinner",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600"
+      },
+      {
+        "day": 6,
+        "title": "Departure",
+        "description": "Transfer to airport for departure.",
+        "activities": ["Hotel check-out", "Airport drop"],
+        "meals": "Breakfast Included",
+        "image": "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?q=80&w=600"
+      }
+    ],
+    "isFeatured": true
   }
 ];
 
@@ -2262,7 +2620,7 @@ export const mockTestimonials = [
     name: "Sarah Mitchell",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150",
     rating: 5,
-    text: "The Leh Ladakh tour packages was absolutely flawless. Every detail was taken care of — from the airport pickup to the private villa. I've traveled with many agencies, but Voyager/Starline sets a completely different standard.",
+    text: "The Leh Ladakh tour packages was absolutely flawless. Every detail was taken care of — from the airport pickup to the private villa. I've traveled with many agencies, but Voyager/Skyway sets a completely different standard.",
     tourName: "Leh Ladakh Wonders & Nubra Valley"
   },
   {
@@ -2278,7 +2636,7 @@ export const mockTestimonials = [
     name: "Priya Sharma",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150",
     rating: 5,
-    text: "Our South Goa honeymoon was beyond perfection. The overwater bungalow, private butler, the little surprises they planned for us — I cried happy tears. Starline Travel made magic happen.",
+    text: "Our South Goa honeymoon was beyond perfection. The overwater bungalow, private butler, the little surprises they planned for us — I cried happy tears. Skyway Travel made magic happen.",
     tourName: "Romantic Escape to South Goa"
   }
 ];

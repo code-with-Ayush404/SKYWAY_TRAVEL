@@ -29,8 +29,8 @@ async function main() {
     // Seed admin
     const hashedAdminPassword = await bcrypt.hash("admin123", 10);
     const admin = new User({
-      email: "admin@starlinetravel.in",
-      name: "Starline Admin",
+      email: "admin@skywaytravel.in",
+      name: "Skyway Admin",
       password: hashedAdminPassword,
       role: "ADMIN"
     });
@@ -40,7 +40,7 @@ async function main() {
     // Seed happy traveler
     const hashedUserPassword = await bcrypt.hash("user123", 10);
     const user = new User({
-      email: "traveler@starlinetravel.in",
+      email: "traveler@skywaytravel.in",
       name: "Happy Traveler",
       password: hashedUserPassword,
       role: "USER"

@@ -85,12 +85,17 @@ html {
   }
 }
 
-/* Custom Swiper pagination dots matching gold/white tokens */
 .hero-custom-pagination {
+  position: absolute !important;
+  bottom: 24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
   display: flex !important;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  z-index: 20 !important;
 }
 
 .hero-bullet {
@@ -110,4 +115,185 @@ html {
   background-color: #C9A227 !important; /* accent-gold */
   width: 24px !important;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Photo Gallery Marquee ─── */
+.gallery-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.gallery-marquee {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+}
+
+.gallery-marquee--left {
+  animation: marquee-scroll-left 40s linear infinite;
+}
+
+.gallery-marquee--right {
+  animation: marquee-scroll-right 45s linear infinite;
+}
+
+.gallery-marquee-wrapper:hover .gallery-marquee {
+  animation-play-state: paused;
+}
+
+.gallery-marquee__item {
+  flex-shrink: 0;
+  width: 280px;
+  height: 210px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background: none;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-marquee__item:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.gallery-marquee__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-marquee__item:hover .gallery-marquee__img {
+  transform: scale(1.1);
+}
+
+.gallery-marquee__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(19, 56, 66, 0.8) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-marquee__item:hover .gallery-marquee__overlay {
+  opacity: 1;
+}
+
+@keyframes marquee-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-marquee__item {
+    width: 220px;
+    height: 170px;
+  }
+}
+
+.gallery-custom-pagination {
+  position: absolute !important;
+  bottom: 12px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  z-index: 20 !important;
+}
+
+.gallery-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background-color: rgba(27, 77, 90, 0.25) !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-bullet:hover {
+  background-color: rgba(27, 77, 90, 0.6) !important;
+}
+
+.gallery-bullet-active {
+  background-color: #C9A227 !important;
+  width: 24px !important;
+  border-radius: 6px !important;
+}
+
+/* ─── Testimonials Marquee ─── */
+.testimonials-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  padding: 12px 0;
+}
+
+.testimonials-marquee {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+}
+
+.testimonials-marquee--left {
+  animation: marquee-scroll-left 50s linear infinite;
+}
+
+.testimonials-marquee--right {
+  animation: marquee-scroll-right 55s linear infinite;
+}
+
+.testimonials-marquee-wrapper:hover .testimonials-marquee {
+  animation-play-state: paused;
+}
+
+.testimonials-card {
+  flex-shrink: 0;
+  width: 380px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.testimonials-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-accent-gold);
+}
+
+@media (max-width: 768px) {
+  .testimonials-card {
+    width: 320px;
+    padding: 24px;
+  }
 }

@@ -11,7 +11,7 @@ export const useAuthStore = create()(
       logout: () => set({ user: null, token: null }),
     }),
     {
-      name: "starline-auth-storage",
+      name: "skyway-auth-storage",
     },
   ),
 );

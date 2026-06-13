@@ -50,10 +50,10 @@ export default function TaxiClient({ initialCars }) {
   const getWhatsAppLink = (carName, customFare) => {
     let text = "";
     if (carName) {
-      text = `Hi Starline Travel, I would like to book the vehicle "${carName}" for a ride request. Please share availability.`;
+      text = `Hi Skyway Travel, I would like to book the vehicle "${carName}" for a ride request. Please share availability.`;
     } else {
       text =
-        `Hi Starline Travel, I would like to book a transfer:\n\n` +
+        `Hi Skyway Travel, I would like to book a transfer:\n\n` +
         `Vehicle: ${activeTypeOption.name}\n` +
         `Pickup: ${pickup}\n` +
         `Dropoff: ${drop}\n` +
@@ -95,7 +95,7 @@ export default function TaxiClient({ initialCars }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800"
-                alt="Starline premium taxi transfers"
+                alt="Skyway premium taxi transfers"
                 className="w-full h-full object-cover"
               />
 

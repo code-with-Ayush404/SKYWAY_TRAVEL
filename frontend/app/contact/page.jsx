@@ -267,10 +267,10 @@ export default function ContactPage() {
                   Support Inbox
                 </span>
                 <a
-                  href="mailto:hello@starlinetravel.in"
+                  href="mailto:hello@skywaytravel.in"
                   className="text-xs text-text-muted hover:underline hover:text-accent-gold"
                 >
-                  hello@starlinetravel.in
+                  hello@skywaytravel.in
                 </a>
               </div>
             </div>
@@ -288,7 +288,7 @@ export default function ContactPage() {
                   WhatsApp Support
                 </span>
                 <a
-                  href="https://wa.me/919876543210?text=Hi%20Starline%20Travel"
+                  href="https://wa.me/919876543210?text=Hi%20Skyway%20Travel"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs text-text-muted hover:underline hover:text-accent-gold"
@@ -316,7 +316,7 @@ export default function ContactPage() {
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Starline Travel office location in Ayodhya, UP"
+            title="Skyway Travel office location in Ayodhya, UP"
           ></iframe>
         </div>
       </section>

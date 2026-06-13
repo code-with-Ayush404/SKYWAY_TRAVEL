@@ -84,7 +84,7 @@ export default function WeddingClient({ initialCars }) {
 
   const getWhatsAppLink = (carName, price) => {
     const text =
-      `Hi Starline Travel, I would like to book the wedding rental car:\n\n` +
+      `Hi Skyway Travel, I would like to book the wedding rental car:\n\n` +
       `Car: ${carName}\n` +
       `Price: ₹${price}\n` +
       `Please let me know availability for my upcoming wedding.`;
@@ -118,7 +118,7 @@ export default function WeddingClient({ initialCars }) {
                 </span>
               </h1>
               <p className="text-text-muted text-xs md:text-sm mt-1 leading-relaxed">
-                Starline Travel provides premium, impeccably decorated luxury
+                Skyway Travel provides premium, impeccably decorated luxury
                 cars and vintage sedans for weddings. Arrive in style and make a
                 breathtaking impression.
               </p>

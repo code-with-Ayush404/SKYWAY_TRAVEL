@@ -1,10 +1,9 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
-import { Plane, Menu, X, User, LogOut } from "lucide-react";
+import { Plane, Menu, X, User, LogOut, ChevronDown } from "lucide-react";
 
 export default function Header() {
   const pathname = usePathname();
@@ -12,6 +11,8 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isToursDropdownOpen, setIsToursDropdownOpen] = useState(false);
+  const toursDropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,13 +26,37 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        toursDropdownRef.current &&
+        !toursDropdownRef.current.contains(event.target)
+      ) {
+        setIsToursDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Tour Packages", href: "/tour-packages" },
+    { name: "Tours", href: "/tour-packages" },
     { name: "Taxi Service", href: "/taxi-service" },
     { name: "Wedding Rentals", href: "/wedding-rentals" },
     { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
+  ];
+
+  const tourDropdownItems = [
+    { name: "Best 3 Days Kathmandu Tour", href: "/tour-packages/best-3-days-kathmandu-tour" },
+    { name: "Best 3 Days Pokhara Tour", href: "/tour-packages/best-3-days-pokhara-tour" },
+    { name: "Best 4 Day Manakamna Tour", href: "/tour-packages/best-4-day-manakamna-tour" },
+    { name: "Best 5 Day Katmandu Tour", href: "/tour-packages/best-5-day-katmandu-tour" },
+    { name: "Best 6 Day Nepal Tour", href: "/tour-packages/best-6-day-nepal-tour" },
+    { name: "View More", href: "/tour-packages" },
   ];
 
   const handleLogout = () => {
@@ -44,6 +69,8 @@ export default function Header() {
     }
     return pathname.startsWith(href);
   };
+
+  const brandName = "Skyway";
 
   return (
     <header
@@ -60,7 +87,7 @@ export default function Header() {
             <Plane className="h-5 w-5 rotate-45" />
           </div>
           <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-primary-teal flex items-center gap-1">
-            Starline{" "}
+            {brandName}{" "}
             <span className="italic-accent text-lg md:text-xl font-normal lowercase">
               travel
             </span>
@@ -69,19 +96,60 @@ export default function Header() {
 
         {/* Desktop Nav Links */}
         <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-medium tracking-wide transition-colors duration-200 hover:text-accent-gold ${
-                isActive(link.href)
-                  ? "text-primary-teal border-b-2 border-accent-gold pb-1 font-semibold"
-                  : "text-text-muted"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            if (link.name === "Tours") {
+              return (
+                <div key={link.href} ref={toursDropdownRef} className="relative py-2">
+                  <button
+                    onClick={() => setIsToursDropdownOpen(!isToursDropdownOpen)}
+                    className={`text-sm font-medium tracking-wide transition-colors duration-200 hover:text-accent-gold flex items-center gap-1 cursor-pointer focus:outline-none ${
+                      isActive(link.href)
+                        ? "text-primary-teal border-b-2 border-accent-gold pb-0.5 font-semibold"
+                        : "text-text-muted"
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isToursDropdownOpen ? "rotate-180" : ""}`} />
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  {isToursDropdownOpen && (
+                    <div className="absolute left-0 mt-3 w-64 bg-white border border-border-soft border-b-2 border-b-sky-500 rounded-md shadow-lg py-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200">
+                      {tourDropdownItems.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={item.href}
+                          onClick={() => setIsToursDropdownOpen(false)}
+                          className="group px-4 py-2.5 text-sm text-text-dark flex items-center gap-2 transition-all duration-200 relative overflow-hidden"
+                        >
+                          <span className="w-0 overflow-hidden opacity-0 transition-all duration-200 group-hover:w-4 group-hover:opacity-100 flex items-center shrink-0">
+                            <Plane className="h-3.5 w-3.5 rotate-90 text-sky-500" />
+                          </span>
+                          <span className="transition-colors duration-200 group-hover:text-sky-500 font-medium">
+                            {item.name}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium tracking-wide transition-colors duration-200 hover:text-accent-gold ${
+                  isActive(link.href)
+                    ? "text-primary-teal border-b-2 border-accent-gold pb-1 font-semibold"
+                    : "text-text-muted"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Action Buttons */}

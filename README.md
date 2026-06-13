@@ -1,6 +1,6 @@
-# Starline Travel Platform
+# Skyway Travel Platform
 
-Starline Travel is a premium, production-grade travel & booking platform offering curated tour packages, airport/city transfers, and luxury wedding car rentals across India & Nepal. Designed with an editorial travel magazine aesthetic, the platform features a soft cream background, large serif headings, and a refined teal & gold duo-tone layout.
+Skyway Travel is a premium, production-grade travel & booking platform offering curated tour packages, airport/city transfers, and luxury wedding car rentals across India & Nepal. Designed with an editorial travel magazine aesthetic, the platform features a soft cream background, large serif headings, and a refined teal & gold duo-tone layout.
 
 ---
 
@@ -62,7 +62,7 @@ Starline Travel is a premium, production-grade travel & booking platform offerin
 
 ## 💻 Local Setup Guide
 
-Follow these steps to run Starline Travel on your local machine:
+Follow these steps to run Skyway Travel on your local machine:
 
 ### 1. Prerequisites
 - **Node.js**: v18.x or v20.x
@@ -90,7 +90,7 @@ npx prisma db push
 # Seed database
 npx prisma db seed
 ```
-*Note: The default seed command creates an admin account (`admin@starlinetravel.in` / `admin123`) and a traveler account (`traveler@starlinetravel.in` / `user123`).*
+*Note: The default seed command creates an admin account (`admin@skywaytravel.in` / `admin123`) and a traveler account (`traveler@skywaytravel.in` / `user123`).*
 
 ### 5. Start Development Server
 ```bash
@@ -110,14 +110,14 @@ Start the PostgreSQL database and Next.js container together:
 docker-compose up --build
 ```
 This launches:
-- **Starline DB** (PostgreSQL) on port `5432`
-- **Starline Web** (Next.js) on port `3000`
+- **Skyway DB** (PostgreSQL) on port `5432`
+- **Skyway Web** (Next.js) on port `3000`
 
 ### Build Independent Container
 ```bash
 # Build the image
-docker build -t starline-travel-app .
+docker build -t skyway-travel-app .
 
 # Run the container
-docker run -p 3000:3000 --env-file .env starline-travel-app
+docker run -p 3000:3000 --env-file .env skyway-travel-app
 ```

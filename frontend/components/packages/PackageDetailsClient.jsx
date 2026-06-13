@@ -125,7 +125,7 @@ export default function PackageDetailsClient({ pkg, relatedPackages }) {
   };
 
   const getWhatsAppLink = () => {
-    const text = `Hi Starline Travel, I am interested in the "${pkg.title}" package (${pkg.days}D/${pkg.nights}N) starting from $${pkg.currentPrice}/person. Please share details.`;
+    const text = `Hi Skyway Travel, I am interested in the "${pkg.title}" package (${pkg.days}D/${pkg.nights}N) starting from $${pkg.currentPrice}/person. Please share details.`;
     return `https://wa.me/919876543210?text=${encodeURIComponent(text)}`;
   };
 

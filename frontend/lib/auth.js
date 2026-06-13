@@ -48,16 +48,16 @@ export const authOptions = {
           console.warn("NextAuth authorize API call failed, trying local demo credentials:", error);
           
           // Check for mock fallback credentials
-          if (credentials.email === "admin@starlinetravel.in" && credentials.password === "admin123") {
+          if (credentials.email === "admin@skywaytravel.in" && credentials.password === "admin123") {
             return {
               id: "admin-mock-id",
               email: credentials.email,
-              name: "Starline Admin",
+              name: "Skyway Admin",
               role: "ADMIN",
               token: "mock-jwt-token-admin",
             };
           }
-          if (credentials.email === "traveler@starlinetravel.in" && credentials.password === "user123") {
+          if (credentials.email === "traveler@skywaytravel.in" && credentials.password === "user123") {
             return {
               id: "user-mock-id",
               email: credentials.email,
@@ -99,5 +99,5 @@ export const authOptions = {
     signIn: "/auth",
     error: "/auth",
   },
-  secret: process.env.NEXTAUTH_SECRET || "super-secret-starline-key",
+  secret: process.env.NEXTAUTH_SECRET || "super-secret-skyway-key",
 };

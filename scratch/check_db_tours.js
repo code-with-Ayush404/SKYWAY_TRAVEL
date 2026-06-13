@@ -5,7 +5,7 @@ import * as dotenv from "dotenv";
 dotenv.config({ path: "../backend/.env" });
 
 async function checkTours() {
-  const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/starline_travel";
+  const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/skyway_travel";
   console.log("Connecting to", mongoUri);
   try {
     await mongoose.connect(mongoUri);

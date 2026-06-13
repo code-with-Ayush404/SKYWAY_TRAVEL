@@ -279,7 +279,7 @@ export default function AdminPage() {
       <header className="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold">Starline Travel Admin Panel</h1>
+            <h1 className="text-3xl font-bold">Skyway Travel Admin Panel</h1>
             <p className="text-blue-100">Manage Tour Packages & Vehicles</p>
           </div>
 
