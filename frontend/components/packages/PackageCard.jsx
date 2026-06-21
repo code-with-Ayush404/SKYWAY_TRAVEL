@@ -45,11 +45,11 @@ export default function PackageCard({ pkg }) {
               {pkg.badge}
             </span>
           )}
-          {pkg.discount && (
+          {/* {pkg.discount && (
             <span className="bg-[#2E8B57] text-white text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full shadow-sm">
               {pkg.discount}
             </span>
-          )}
+          )} */}
         </div>
 
         {/* Favorite Heart Button */}
@@ -128,7 +128,7 @@ export default function PackageCard({ pkg }) {
 
         {/* Pricing & Button Actions */}
         <div className="flex items-center justify-between pt-2 mt-auto">
-          <div className="flex flex-col text-left">
+          {/* <div className="flex flex-col text-left">
             <span className="text-xs text-text-muted line-through">
               ${pkg.originalPrice}
             </span>
@@ -138,8 +138,14 @@ export default function PackageCard({ pkg }) {
                 / person
               </span>
             </span>
-          </div>
-
+          </div> */}
+    <Link
+            href={`/tour-packages/${pkg.slug}`}
+            className=" bg-accent-gold hover:bg-accent-gold-lt text-white text-xs font-semibold py-2.5 px-4 rounded-btn flex items-center gap-1 transition-all hover:translate-x-1 duration-200"
+          >
+            <span>Book Now</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
           <Link
             href={`/tour-packages/${pkg.slug}`}
             className="bg-primary-teal hover:bg-primary-teal-dk text-white text-xs font-semibold py-2.5 px-4 rounded-btn flex items-center gap-1 transition-all hover:translate-x-1 duration-200"
