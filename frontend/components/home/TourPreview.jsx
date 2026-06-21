@@ -9,16 +9,16 @@ export default function TourPreview({ packages }) {
   const displayPackages = featured.length > 0 ? featured : packages.slice(0, 3);
 
   return (
-    <section className="py-24 bg-bg-cream">
+    <section className="py-14 bg-bg-cream">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Section Heading */}
         <div className="flex flex-col items-center gap-2 mb-12">
-          <span className="small-caps-label">CURATED EXPERIENCES</span>
+          <span className="small-caps-label ">CURATED EXPERIENCES</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-primary-teal">
             Our Tour Packages
           </h2>
           <div className="h-0.5 w-16 bg-accent-gold mt-2"></div>
-          <p className="text-text-muted text-sm md:text-base max-w-xl mt-3 leading-relaxed">
+          <p className="text-text-muted text-m md:text-base max-w-xl mt-3 leading-relaxed">
             Handpicked adventures crafted by expert travel designers for every
             kind of explorer across India and Nepal.
           </p>

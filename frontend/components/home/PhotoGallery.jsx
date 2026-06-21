@@ -201,7 +201,7 @@ export default function PhotoGallery() {
   };
 
   return (
-    <section className="py-24 bg-white border-t border-border-soft relative overflow-hidden">
+    <section className="py-14 bg-white border-t border-border-soft relative overflow-hidden">
       {/* Section Header */}
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
         <span className="small-caps-label block mb-3">

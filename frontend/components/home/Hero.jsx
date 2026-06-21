@@ -401,7 +401,7 @@ const heroSlides = [
   {
     id: 2,
     type: "image",
-    src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920",
+    src: "https://images.unsplash.com/photo-1734940513798-363c90168f9d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     label: "CAR RENTAL SERVICE",
     heading: "Your Trusted Choice\nFor Car Rent Services",
     description:
@@ -501,7 +501,7 @@ export default function Hero() {
     ));
 
   return (
-    <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative w-full min-h-[750px] md:min-h-[700px] h-screen overflow-hidden bg-black">
       <Swiper
         onSwiper={setSwiperInstance}
         modules={[Autoplay, EffectFade, Pagination, SwiperNavigation]}
@@ -551,9 +551,9 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/20 z-[1]" />
 
             <div className="absolute inset-0 z-[2] flex flex-col items-start justify-center text-left px-8 md:px-16 lg:px-24">
-              <span className="bg-black/40 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white text-xs font-semibold tracking-[0.2em] inline-flex items-center gap-1.5 shadow-sm mb-6 select-none">
+              {/* <span className="bg-black/40 border border-white/20 backdrop-blur-md mt-5 px-4 py-2 rounded-full text-white text-xs font-semibold tracking-[0.2em] inline-flex items-center gap-1.5 shadow-sm mb-6 select-none">
                 ✈️ {slide.label}
-              </span>
+              </span> */}
 
               <h1
                 className="text-5xl md:text-7xl font-serif text-white font-bold leading-tight max-w-5xl tracking-tight"
@@ -629,12 +629,15 @@ export default function Hero() {
                 </div>
               ) : (
                 <Link
-                  href="/tour-packages"
-                  className="mt-10 inline-flex items-center gap-3 text-white text-base font-semibold border border-white/60 backdrop-blur-sm bg-white/10 hover:bg-white/20 px-8 py-4 rounded-full transition-all duration-300"
-                >
-                  Explore Tours
-                  <span className="text-2xl">→</span>
-                </Link>
+  href="/tour-packages"
+  className="group mt-10 inline-flex items-center gap-4 rounded-full border border-[#d4a629]/60 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-md shadow-2xl transition-all duration-300 hover:border-[#d4a629] hover:bg-[#dfd2ac] hover:text-[#164b57]"
+>
+  <span className="tracking-wide">Explore Tours</span>
+
+  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-current transition-all duration-300 group-hover:translate-x-1">
+    →
+  </div>
+</Link>
               )}
             </div>
           </SwiperSlide>
@@ -655,7 +658,7 @@ export default function Hero() {
         <ChevronRight className="h-5 w-5" />
       </button>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3 hero-custom-pagination" />
+      <div className="absolute left-1/2 bottom-8 md:bottom-10 -translate-x-1/2 z-30 flex gap-3 hero-custom-pagination" />
     </section>
   );
 }
