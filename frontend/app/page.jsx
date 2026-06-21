@@ -1,5 +1,5 @@
 import Hero from "@/components/home/Hero";
-import Stats from "@/components/home/Stats";
+// import Stats from "@/components/home/Stats";
 import TourPreview from "@/components/home/TourPreview";
 import TaxiTeaser from "@/components/home/TaxiTeaser";
 import WhyChoose from "@/components/home/WhyChoose";
@@ -23,7 +23,7 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col w-full">
       <Hero />
-      <Stats />
+      {/* <Stats /> */}
       <TourPreview packages={packages} />
       <TaxiTeaser />
       <WhyChoose />
