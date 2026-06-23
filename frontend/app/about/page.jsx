@@ -240,7 +240,7 @@ export default function AboutPage() {
       </section>
 
       <div className="bg-[#f5efe6]">
-        <section className="mx-auto max-w-7xl px-4 py-10 pb-20 sm:px-6 sm:pb-24">
+        <section className="mx-auto max-w-8xl px-4 py-10 pb-20 sm:px-6 sm:pb-24">
           <div className="mb-10">
             <div className="w-full text-center">
               <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#d4a629] sm:text-lg sm:tracking-[0.35em]">
@@ -253,10 +253,10 @@ export default function AboutPage() {
 
               <div className="mx-auto mt-6 h-[3px] w-20 bg-[#d4a629]" />
             </div>
-
+{/* 
             <div className="hidden rounded-full bg-white p-4 text-[#d4a629] shadow md:flex">
               <Camera size={30} />
-            </div>
+            </div> */}
           </div>
 
           <div className="overflow-hidden pb-6">
