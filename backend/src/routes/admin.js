@@ -14,8 +14,46 @@ import {
   getVehicleById,
   getAllVehicles
 } from "../lib/vehicleService.js";
+import multer from "multer";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import cloudinary from "../lib/cloudinary.js";
 
 const router = express.Router();
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "skyway-travel",
+    allowed_formats: ["jpg", "jpeg", "png", "webp"],
+  },
+});
+
+const upload = multer({ storage });
+
+router.post(
+  "/upload",
+  verifyToken,
+  verifyAdmin,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      if (!req.file) {
+        return res.status(400).json({ error: "No image uploaded" });
+      }
+
+      return res.json({
+        message: "Image uploaded successfully",
+        imageUrl: req.file.path,
+      });
+    } catch (error) {
+      console.error("POST /admin/upload error:", error);
+      return res.status(500).json({
+        error: "Image upload failed",
+        details: error.message,
+      });
+    }
+  }
+);
 
 // ===== TOUR PACKAGE MANAGEMENT =====
 
@@ -36,12 +74,13 @@ router.post("/tours", verifyToken, verifyAdmin, async (req, res) => {
 
       title: body.title,
       location: body.location,
+      mapLocation: body.mapLocation || body.location,
       category: body.category || "Domestic",
       groupSize: body.groupSize || "2-6 People",
       image: body.image,
 
-      originalPrice: Number(body.originalPrice || body.currentPrice),
-      currentPrice: Number(body.currentPrice),
+originalPrice: Number(body.originalPrice || 0),
+currentPrice: Number(body.currentPrice || 0),
       days: Number(body.days || 1),
       nights: Number(body.nights || 0),
 

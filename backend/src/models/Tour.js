@@ -1,20 +1,24 @@
 import mongoose, { Schema } from "mongoose";
 
-const DayPlanSchema = new Schema({
-  day: { type: Number, required: true },
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  activities: { type: [String], default: [] },
-  meals: { type: String, required: true },
-  image: { type: String, default: null }
-}, { _id: false });
+const DayPlanSchema = new Schema(
+  {
+    day: { type: Number, required: true },
+    title: { type: String, required: true },
+    description: { type: [String], default: [] },
+    image: { type: String, default: null },
+  },
+  { _id: false }
+);
 
 const TourSchema = new Schema(
   {
     id: { type: String, required: true, unique: true, index: true },
     slug: { type: String, required: true, unique: true, index: true },
     title: { type: String, required: true },
+    tripSummary: { type: String, default: "" },
+highlights: { type: [String], default: [] },
     location: { type: String, required: true },
+    mapLocation: { type: String, default: "" },
     category: { type: String, required: true },
     badge: { type: String, default: null },
     discount: { type: String, default: null },
