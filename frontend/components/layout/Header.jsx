@@ -1,17 +1,23 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { Plane, Menu, X, User, LogOut, ChevronDown } from "lucide-react";
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const { data: session, status } = useSession();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isToursDropdownOpen, setIsToursDropdownOpen] = useState(false);
+  
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+  const [adminUser, setAdminUser] = useState(null);
+  const [isAdminDropdownOpen, setIsAdminDropdownOpen] = useState(false);
+
   const toursDropdownRef = useRef(null);
 
   useEffect(() => {
@@ -25,6 +31,25 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    const role = localStorage.getItem("userRole");
+    const storedUser = localStorage.getItem("user");
+    if (token && role === "ADMIN") {
+      setIsAdminLoggedIn(true);
+      if (storedUser) {
+        try {
+          setAdminUser(JSON.parse(storedUser));
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    } else {
+      setIsAdminLoggedIn(false);
+      setAdminUser(null);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -61,6 +86,16 @@ export default function Header() {
 
   const handleLogout = () => {
     signOut({ callbackUrl: "/" });
+  };
+
+  const handleAdminLogout = () => {
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("userRole");
+    localStorage.removeItem("user");
+    setIsAdminLoggedIn(false);
+    setAdminUser(null);
+    setIsAdminDropdownOpen(false);
+    router.push("/");
   };
 
   const isActive = (href) => {
@@ -162,6 +197,41 @@ export default function Header() {
         <div className="hidden lg:flex items-center gap-4">
           {status === "loading" ? (
             <div className="h-10 w-24 bg-border-soft animate-pulse rounded-btn"></div>
+          ) : isAdminLoggedIn ? (
+            <div className="relative">
+              <button
+                onClick={() => setIsAdminDropdownOpen(!isAdminDropdownOpen)}
+                className="flex items-center gap-2 px-4 py-2 border border-border-soft hover:border-primary-teal rounded-btn text-primary-teal font-semibold text-sm transition-all duration-200 cursor-pointer"
+              >
+                <User className="h-4 w-4 text-accent-gold" />
+                <span>Admin Dashboard</span>
+              </button>
+              {isAdminDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-border-soft rounded-card shadow-lg py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-200">
+                  <div className="px-4 py-2 border-b border-border-soft text-xs text-text-muted">
+                    Signed in as Admin
+                    <p className="font-semibold text-text-dark truncate">
+                      {adminUser?.email || "admin@skyway.com"}
+                    </p>
+                  </div>
+                  <Link
+                    href="/admin"
+                    onClick={() => setIsAdminDropdownOpen(false)}
+                    className="w-full text-left px-4 py-2 text-sm text-primary-teal hover:bg-bg-cream flex items-center gap-2 transition-colors duration-200 font-medium"
+                  >
+                    <User className="h-4 w-4" />
+                    <span>Go to Dashboard</span>
+                  </Link>
+                  <button
+                    onClick={handleAdminLogout}
+                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-bg-cream flex items-center gap-2 transition-colors duration-200 cursor-pointer font-medium"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span>Logout</span>
+                  </button>
+                </div>
+              )}
+            </div>
           ) : session ? (
             <div className="relative">
               <button
@@ -243,7 +313,34 @@ export default function Header() {
           <hr className="border-border-soft" />
 
           <div className="flex flex-col gap-3">
-            {session ? (
+            {isAdminLoggedIn ? (
+              <div className="flex flex-col gap-2">
+                <div className="text-xs text-text-muted px-2">
+                  Signed in as Admin
+                  <span className="font-semibold text-text-dark block truncate">
+                    {adminUser?.email || "admin@skyway.com"}
+                  </span>
+                </div>
+                <Link
+                  href="/admin"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full text-center py-2.5 border border-primary-teal text-primary-teal rounded-btn hover:bg-primary-teal hover:text-white text-sm font-semibold flex items-center justify-center gap-2 transition-colors duration-200"
+                >
+                  <User className="h-4 w-4" />
+                  Admin Dashboard
+                </Link>
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    handleAdminLogout();
+                  }}
+                  className="w-full text-center py-2.5 border border-red-200 text-red-600 rounded-btn hover:bg-red-50 text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Logout
+                </button>
+              </div>
+            ) : session ? (
               <div className="flex flex-col gap-2">
                 <div className="text-xs text-text-muted px-2">
                   Signed in as{" "}

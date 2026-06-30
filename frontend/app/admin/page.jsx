@@ -933,7 +933,8 @@ outStation:
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("userRole");
-    router.push("/login");
+    localStorage.removeItem("user");
+    router.push("/");
   };
 
   return (
