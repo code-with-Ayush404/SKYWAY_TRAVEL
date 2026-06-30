@@ -937,17 +937,17 @@ outStation:
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-linear-to-r from-blue-900 to-blue-700 text-white p-6 shadow-lg">
+    <div className="min-h-screen bg-bg-cream">
+      <header className="bg-gradient-to-r from-primary-teal to-primary-teal-dk text-white p-6 shadow-md border-b border-primary-teal-dk">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold"   style={{ color: "#ffffff" }}>Skyway Travel Admin Panel</h1>
-            <p className="text-blue-100">Manage Tour Packages & Vehicles</p>
+            <h1 className="text-3xl font-bold font-serif tracking-tight" style={{ color: "#ffffff" }}>Skyway Travel Admin Panel</h1>
+            <p className="text-white/80 text-sm md:text-base font-sans tracking-wide">Manage Tour Packages & Vehicles</p>
           </div>
 
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg"
+            className="flex items-center gap-2 bg-accent-gold hover:bg-accent-gold-lt text-white px-5 py-2.5 rounded-btn font-semibold shadow-sm transition-all duration-300 cursor-pointer"
           >
             <LogOut size={20} />
             Logout
@@ -964,10 +964,10 @@ outStation:
               setFormData(emptyTour);
               setEditingId(null);
             }}
-            className={`px-6 py-3 rounded-lg font-semibold ${
+            className={`px-6 py-3 rounded-btn font-semibold transition-all duration-200 cursor-pointer ${
               activeTab === "tours"
-                ? "bg-blue-600 text-white"
-                : "bg-white text-gray-700 border"
+                ? "bg-primary-teal text-white shadow-sm border border-primary-teal"
+                : "bg-white text-text-muted hover:text-primary-teal hover:bg-bg-cream/40 border border-border-soft"
             }`}
           >
             Tour Packages
@@ -980,10 +980,10 @@ outStation:
               setFormData(emptyVehicle);
               setEditingId(null);
             }}
-            className={`px-6 py-3 rounded-lg font-semibold ${
+            className={`px-6 py-3 rounded-btn font-semibold transition-all duration-200 cursor-pointer ${
               activeTab === "vehicles"
-                ? "bg-blue-600 text-white"
-                : "bg-white text-gray-700 border"
+                ? "bg-primary-teal text-white shadow-sm border border-primary-teal"
+                : "bg-white text-text-muted hover:text-primary-teal hover:bg-bg-cream/40 border border-border-soft"
             }`}
           >
             Vehicles
@@ -995,10 +995,10 @@ outStation:
     setFormData(emptyVehicle);
     setEditingId(null);
   }}
-  className={`px-6 py-3 rounded-lg font-semibold ${
+  className={`px-6 py-3 rounded-btn font-semibold transition-all duration-200 cursor-pointer ${
     activeTab === "wedding"
-      ? "bg-blue-600 text-white"
-      : "bg-white text-gray-700 border"
+      ? "bg-primary-teal text-white shadow-sm border border-primary-teal"
+      : "bg-white text-text-muted hover:text-primary-teal hover:bg-bg-cream/40 border border-border-soft"
   }`}
 >
   Wedding
@@ -1012,7 +1012,7 @@ outStation:
               setEditingId(null);
               setFormData(activeTab === "tours" ? emptyTour : emptyVehicle);
             }}
-            className="mb-6 flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg"
+            className="mb-6 flex items-center gap-2 bg-accent-gold hover:bg-primary-teal text-white font-semibold px-5 py-2.5 rounded-btn shadow-sm transition-all duration-300 cursor-pointer"
           >
             <Plus size={20} />
 Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wedding Car" : "Vehicle"}
@@ -1023,7 +1023,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
         {showForm && (
           <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-lg shadow-lg mb-6 grid grid-cols-1 md:grid-cols-2 gap-4"
+            className="bg-white p-6 rounded-card border border-border-soft shadow-sm mb-6 grid grid-cols-1 md:grid-cols-2 gap-4"
           >
             {activeTab === "tours" ? (
               <>
@@ -1035,7 +1035,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, title: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
                 <textarea
   placeholder="Trip Summary"
@@ -1043,7 +1043,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
   onChange={(e) =>
     setFormData({ ...formData, tripSummary: e.target.value })
   }
-  className="border p-2 rounded md:col-span-2"
+  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all md:col-span-2"
   rows={3}
 />
 
@@ -1053,7 +1053,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
   onChange={(e) =>
     setFormData({ ...formData, highlightsText: e.target.value })
   }
-  className="border p-2 rounded md:col-span-2"
+  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all md:col-span-2"
 />
                 <input
                   required
@@ -1062,7 +1062,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, location: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
                 <input
   placeholder="Map Location e.g. Kathmandu, Nepal"
@@ -1070,7 +1070,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
   onChange={(e) =>
     setFormData({ ...formData, mapLocation: e.target.value })
   }
-  className="border p-2 rounded"
+  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
 />
                 <input
                   required
@@ -1079,7 +1079,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, category: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
                 <input
                   placeholder="Badge e.g. Best Seller"
@@ -1087,7 +1087,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, badge: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
                 {/* <input
                   placeholder="Discount e.g. 20% OFF"
@@ -1095,7 +1095,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, discount: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 /> */}
                 <input
                   type="number"
@@ -1105,7 +1105,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, rating: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
                 <input
                   type="number"
@@ -1114,7 +1114,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, ratingCount: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
                 {/* <input
                   required
@@ -1124,7 +1124,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, originalPrice: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 /> */}
                 {/* <input
                   required
@@ -1134,7 +1134,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, currentPrice: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 /> */}
                 <input
                   required
@@ -1144,7 +1144,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, days: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
                 <input
                   required
@@ -1154,7 +1154,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, nights: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
                 <input
                   required
@@ -1163,7 +1163,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, groupSize: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
                 {/* <input
                   required
@@ -1175,7 +1175,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   className="border p-2 rounded"
                 /> */}
 
-                <div className="border rounded p-3 flex flex-col gap-2">
+                 <div className="border border-border-soft rounded-btn p-4 flex flex-col gap-2 bg-bg-cream/20">
   <input
     required
     placeholder="Main Image URL"
@@ -1183,7 +1183,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
     onChange={(e) =>
       setFormData({ ...formData, image: e.target.value })
     }
-    className="border p-2 rounded"
+    className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
   />
 
   <input
@@ -1202,14 +1202,14 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
         toast.error("Image upload failed");
       }
     }}
-    className="border p-2 rounded text-sm"
+    className="border border-border-soft file:mr-4 file:py-2 file:px-4 file:rounded-btn file:border-0 file:text-xs file:font-semibold file:bg-bg-cream file:text-primary-teal hover:file:bg-primary-teal hover:file:text-white file:transition-all p-2 rounded-btn text-sm text-text-muted bg-white transition-all cursor-pointer"
   />
 
   {formData.image && (
     <img
       src={formData.image}
       alt="Main preview"
-      className="h-24 w-32 object-cover rounded border"
+      className="h-24 w-32 object-cover rounded-btn border border-border-soft shadow-xs"
     />
   )}
 </div>
@@ -1219,7 +1219,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, tagsText: e.target.value })
                   }
-                  className="border p-2 rounded md:col-span-2"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all md:col-span-2"
                 />
                 <input
                   placeholder="Inclusions comma separated"
@@ -1227,7 +1227,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, inclusionsText: e.target.value })
                   }
-                  className="border p-2 rounded md:col-span-2"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all md:col-span-2"
                 />
                 <input
                   placeholder="Exclusions comma separated"
@@ -1235,7 +1235,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, exclusionsText: e.target.value })
                   }
-                  className="border p-2 rounded md:col-span-2"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all md:col-span-2"
                 />
                 {/* <input
                   placeholder="Gallery image URLs comma separated"
@@ -1243,16 +1243,16 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, galleryText: e.target.value })
                   }
-                  className="border p-2 rounded md:col-span-2"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all md:col-span-2"
                 /> */}
-                <div className="md:col-span-2 border rounded p-3 flex flex-col gap-3">
+                <div className="md:col-span-2 border border-border-soft rounded-btn p-4 flex flex-col gap-3 bg-bg-cream/20">
   <input
     placeholder="Gallery image URLs comma separated"
     value={formData.galleryText || ""}
     onChange={(e) =>
       setFormData({ ...formData, galleryText: e.target.value })
     }
-    className="border p-2 rounded"
+    className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
   />
 
   <input
@@ -1286,7 +1286,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
         toast.error("Gallery upload failed");
       }
     }}
-    className="border p-2 rounded text-sm"
+    className="border border-border-soft file:mr-4 file:py-2 file:px-4 file:rounded-btn file:border-0 file:text-xs file:font-semibold file:bg-bg-cream file:text-primary-teal hover:file:bg-primary-teal hover:file:text-white file:transition-all p-2 rounded-btn text-sm text-text-muted bg-white transition-all cursor-pointer"
   />
 
   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -1299,7 +1299,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
           <img
             src={url}
             alt={`Gallery ${index + 1}`}
-            className="h-24 w-full object-cover rounded border"
+            className="h-24 w-full object-cover rounded-btn border border-border-soft shadow-xs"
           />
           <button
             type="button"
@@ -1315,7 +1315,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                 galleryText: updated.join(", "),
               });
             }}
-            className="absolute top-1 right-1 bg-red-600 text-white text-xs px-2 py-1 rounded"
+            className="absolute top-1 right-1 bg-red-600/90 hover:bg-red-600 text-white text-xs px-2 py-1 rounded-btn transition-colors duration-200 shadow-sm cursor-pointer"
           >
             X
           </button>
@@ -1324,13 +1324,13 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
   </div>
 </div>
 {/* YAHAN DAY WISE PLAN  HAI */}
-<div className="md:col-span-2 border rounded-lg p-4 bg-gray-50">
+<div className="md:col-span-2 border border-border-soft rounded-card p-5 bg-bg-cream/30">
   <div className="flex justify-between items-center mb-4">
-    <h3 className="font-bold text-lg">Day Wise Plan</h3>
+    <h3 className="font-serif font-bold text-lg text-primary-teal">Day Wise Plan</h3>
     <button
       type="button"
       onClick={addDayPlan}
-      className="bg-green-600 text-white px-3 py-2 rounded"
+      className="bg-accent-gold hover:bg-primary-teal text-white font-semibold px-4 py-2.5 rounded-btn transition-all duration-200 shadow-sm cursor-pointer"
     >
       Add Day
     </button>
@@ -1339,21 +1339,21 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
   {(formData.dayWisePlan || []).map((day, index) => (
     <div
       key={index}
-      className="border bg-white rounded-lg p-4 mb-4 grid grid-cols-1 md:grid-cols-2 gap-3"
+      className="border border-border-soft bg-white rounded-card p-5 mb-4 grid grid-cols-1 md:grid-cols-2 gap-4 shadow-sm"
     >
       <input
         type="number"
         placeholder="Day Number"
         value={day.day || ""}
         onChange={(e) => updateDayPlan(index, "day", e.target.value)}
-        className="border p-2 rounded"
+        className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
       />
 
       <input
         placeholder="Day Title"
         value={day.title || ""}
         onChange={(e) => updateDayPlan(index, "title", e.target.value)}
-        className="border p-2 rounded"
+        className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
       />
 
       <textarea
@@ -1365,7 +1365,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
         onChange={(e) =>
           updateDayPlan(index, "descriptionText", e.target.value)
         }
-        className="border p-2 rounded md:col-span-2"
+        className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all md:col-span-2"
         rows={4}
       />
 
@@ -1373,7 +1373,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
         placeholder="Day Image URL"
         value={day.image || ""}
         onChange={(e) => updateDayPlan(index, "image", e.target.value)}
-        className="border p-2 rounded md:col-span-2"
+        className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all md:col-span-2"
       />
 
       <input
@@ -1392,21 +1392,21 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
             toast.error("Day image upload failed");
           }
         }}
-        className="border p-2 rounded md:col-span-2 text-sm"
+        className="border border-border-soft file:mr-4 file:py-2 file:px-4 file:rounded-btn file:border-0 file:text-xs file:font-semibold file:bg-bg-cream file:text-primary-teal hover:file:bg-primary-teal hover:file:text-white file:transition-all p-2 rounded-btn text-sm text-text-muted bg-white transition-all cursor-pointer md:col-span-2"
       />
 
       {day.image && (
         <img
           src={day.image}
           alt={`Day ${day.day}`}
-          className="h-24 w-36 object-cover rounded border"
+          className="h-24 w-36 object-cover rounded-btn border border-border-soft shadow-xs"
         />
       )}
 
       <button
         type="button"
         onClick={() => removeDayPlan(index)}
-        className="bg-red-500 text-white px-3 py-2 rounded md:col-span-2"
+        className="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-semibold px-4 py-2.5 rounded-btn md:col-span-2 transition-all duration-200 cursor-pointer"
       >
         Remove Day
       </button>
@@ -1423,7 +1423,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="border p-2 rounded"
+                  className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
                 />
 
                 {/* <select
@@ -1439,10 +1439,10 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                 <input
   value={activeTab === "wedding" ? "Wedding Car" : "Taxi Vehicle"}
   readOnly
-  className="border p-2 rounded bg-gray-100"
+  className="border border-border-soft p-3 rounded-btn text-sm text-text-muted bg-bg-cream/50 cursor-not-allowed"
 />
 
-               <div className="border rounded p-3 flex flex-col gap-2">
+               <div className="border border-border-soft rounded-btn p-4 flex flex-col gap-2 bg-bg-cream/20">
   <input
     required
     placeholder="Image URL"
@@ -1450,7 +1450,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
     onChange={(e) =>
       setFormData({ ...formData, image: e.target.value })
     }
-    className="border p-2 rounded"
+    className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
   />
 
   <input
@@ -1469,14 +1469,14 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
         toast.error("Image upload failed");
       }
     }}
-    className="border p-2 rounded text-sm"
+    className="border border-border-soft file:mr-4 file:py-2 file:px-4 file:rounded-btn file:border-0 file:text-xs file:font-semibold file:bg-bg-cream file:text-primary-teal hover:file:bg-primary-teal hover:file:text-white file:transition-all p-2 rounded-btn text-sm text-text-muted bg-white transition-all cursor-pointer"
   />
 
   {formData.image && (
     <img
       src={formData.image}
       alt="Vehicle preview"
-      className="h-24 w-32 object-cover rounded border"
+      className="h-24 w-32 object-cover rounded-btn border border-border-soft shadow-xs"
     />
   )}
 </div>
@@ -1490,7 +1490,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
       onChange={(e) =>
         setFormData({ ...formData, pricePerKm: e.target.value })
       }
-      className="border p-2 rounded"
+      className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
     />
 
     <input
@@ -1500,7 +1500,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
       onChange={(e) =>
         setFormData({ ...formData, extraKmPrice: e.target.value })
       }
-      className="border p-2 rounded"
+      className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
     />
 
     <input
@@ -1510,7 +1510,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
       onChange={(e) =>
         setFormData({ ...formData, extraHours: e.target.value })
       }
-      className="border p-2 rounded"
+      className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
     />
 
     <input
@@ -1520,7 +1520,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
       onChange={(e) =>
         setFormData({ ...formData, nightCharge: e.target.value })
       }
-      className="border p-2 rounded"
+      className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
     />
 
     <input
@@ -1530,7 +1530,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
       onChange={(e) =>
         setFormData({ ...formData, outStation: e.target.value })
       }
-      className="border p-2 rounded"
+      className="border border-border-soft focus:border-primary-teal focus:ring-1 focus:ring-primary-teal focus:outline-none p-3 rounded-btn text-sm text-text-dark bg-white transition-all"
     />
   </>
 )}
@@ -1539,7 +1539,7 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
 
             <button
               type="submit"
-              className="bg-blue-600 text-white rounded px-4 py-2"
+              className="bg-primary-teal hover:bg-primary-teal-dk text-white font-semibold rounded-btn px-6 py-2.5 transition-all shadow-sm cursor-pointer"
             >
               {editingId ? "Update" : "Save"}
             </button>
@@ -1550,14 +1550,14 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
                 setShowForm(false);
                 resetForm();
               }}
-              className="bg-gray-400 text-white rounded px-4 py-2"
+              className="bg-white border border-border-soft hover:bg-bg-cream text-text-dark font-medium rounded-btn px-6 py-2.5 transition-all cursor-pointer"
             >
               Cancel
             </button>
           </form>
         )}
 
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-white border border-border-soft rounded-card shadow-sm overflow-hidden">
           {loading ? (
             <div className="p-8 text-center text-gray-500">Loading...</div>
           ) : activeTab === "tours" ? (
@@ -1587,7 +1587,7 @@ function TourTable({ tours, onEdit, onDelete }) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full">
-        <thead className="bg-gray-100 border-b">
+        <thead className="bg-bg-cream border-b border-border-soft text-primary-teal font-semibold">
           <tr>
             <th className="text-left p-4">Title</th>
             <th className="text-left p-4">Location</th>
@@ -1602,7 +1602,7 @@ function TourTable({ tours, onEdit, onDelete }) {
             tours.map((tour) => (
               <tr
                 key={tour._id || tour.id}
-                className="border-b hover:bg-gray-50"
+                className="border-b border-border-soft hover:bg-bg-cream/40 transition-colors duration-150"
               >
                 <td className="p-4">{tour.title}</td>
                 <td className="p-4">{tour.location}</td>
@@ -1611,14 +1611,14 @@ function TourTable({ tours, onEdit, onDelete }) {
                 <td className="p-4 flex gap-2">
                   <button
                     onClick={() => onEdit(tour)}
-                    className="bg-blue-500 text-white p-2 rounded"
+                    className="bg-primary-teal hover:bg-primary-teal-dk text-white p-2 rounded-btn transition-colors duration-200 cursor-pointer shadow-xs"
                   >
                     <Edit size={18} />
                   </button>
 
                   <button
                     onClick={() => onDelete(tour._id || tour.id)}
-                    className="bg-red-500 text-white p-2 rounded"
+                    className="bg-red-600 hover:bg-red-700 text-white p-2 rounded-btn transition-colors duration-200 cursor-pointer shadow-xs"
                   >
                     <Trash2 size={18} />
                   </button>
@@ -1642,7 +1642,7 @@ function VehicleTable({ vehicles, onEdit, onDelete }) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full">
-        <thead className="bg-gray-100 border-b">
+        <thead className="bg-bg-cream border-b border-border-soft text-primary-teal font-semibold">
           <tr>
             <th className="text-left p-4">Name</th>
             <th className="text-left p-4">Type</th>
@@ -1658,7 +1658,7 @@ function VehicleTable({ vehicles, onEdit, onDelete }) {
             vehicles.map((vehicle) => (
               <tr
                 key={vehicle._id || vehicle.id}
-                className="border-b hover:bg-gray-50"
+                className="border-b border-border-soft hover:bg-bg-cream/40 transition-colors duration-150"
               >
                 <td className="p-4">{vehicle.name}</td>
                 <td className="p-4">{vehicle.vehicleType}</td>
@@ -1668,14 +1668,14 @@ function VehicleTable({ vehicles, onEdit, onDelete }) {
                 <td className="p-4 flex gap-2">
                   <button
                     onClick={() => onEdit(vehicle)}
-                    className="bg-blue-500 text-white p-2 rounded"
+                    className="bg-primary-teal hover:bg-primary-teal-dk text-white p-2 rounded-btn transition-colors duration-200 cursor-pointer shadow-xs"
                   >
                     <Edit size={18} />
                   </button>
 
                   <button
                     onClick={() => onDelete(vehicle._id || vehicle.id)}
-                    className="bg-red-500 text-white p-2 rounded"
+                    className="bg-red-600 hover:bg-red-700 text-white p-2 rounded-btn transition-colors duration-200 cursor-pointer shadow-xs"
                   >
                     <Trash2 size={18} />
                   </button>

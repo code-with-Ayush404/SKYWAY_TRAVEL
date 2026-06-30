@@ -70,7 +70,7 @@ const testimonials = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen overflow-hidden bg-[#faf7f1] text-[#164b57]">
+    <div className="min-h-screen overflow-hidden bg-bg-cream text-text-dark">
       <style>{`
         @keyframes scrollLeft {
           0% {
@@ -106,17 +106,17 @@ export default function AboutPage() {
       `}</style>
 
       <section className="mx-auto max-w-7xl px-4 pt-8 text-center sm:px-6 sm:pt-10">
-        <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#d4a629] sm:text-xl sm:tracking-[0.35em]">
+        <p className="text-sm font-bold uppercase tracking-[0.22em] text-accent-gold sm:text-xl sm:tracking-[0.35em]">
           Welcome To Skyway Travel
         </p>
 
-        <h2 className="mx-auto mt-4 max-w-6xl font-serif text-3xl font-bold leading-tight text-[#164b57] sm:mt-5 sm:text-4xl md:text-6xl">
+        <h2 className="mx-auto mt-4 max-w-6xl font-serif text-3xl font-bold leading-tight text-primary-teal sm:mt-5 sm:text-4xl md:text-6xl">
           Your trusted travel partner from Gorakhpur
         </h2>
 
-        <div className="mx-auto mt-5 h-[3px] w-20 bg-[#d4a629] sm:mt-6 sm:w-24" />
+        <div className="mx-auto mt-5 h-[3px] w-20 bg-accent-gold sm:mt-6 sm:w-24" />
 
-        <p className="mx-auto mt-6 max-w-6xl pb-8 text-base leading-7 text-gray-600 sm:mt-7 sm:pb-10 sm:text-lg sm:leading-8">
+        <p className="mx-auto mt-6 max-w-6xl pb-8 text-base leading-7 text-text-muted sm:mt-7 sm:pb-10 sm:text-lg sm:leading-8">
           At Skyway Travel Gorakhpur, we believe that every journey should be as
           memorable as the destination itself. With years of experience in the
           travel industry, we offer premium car rental services and carefully
@@ -128,7 +128,7 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <div className="mt-4 mb-4 bg-[#f5efe6]">
+      <div className="mt-4 mb-4 bg-white border-y border-border-soft">
         <section className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div className="grid grid-cols-2 gap-3 sm:gap-5">
             <img
@@ -157,17 +157,17 @@ export default function AboutPage() {
               {features.map((item, i) => (
                 <div
                   key={i}
-                  className="rounded-3xl border border-[#eadfca] bg-white p-5 transition hover:-translate-y-1 hover:shadow-xl sm:p-6"
+                  className="rounded-card border border-border-soft bg-bg-cream/40 p-5 transition hover:-translate-y-1 hover:shadow-md sm:p-6 hover:border-accent-gold/50 duration-300"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#faf7f1] text-[#d4a629] sm:h-14 sm:w-14">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-accent-gold border border-border-soft sm:h-14 sm:w-14">
                     {item.icon}
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#164b57] sm:text-xl">
+                  <h3 className="text-lg font-serif font-bold text-primary-teal sm:text-xl">
                     {item.title}
                   </h3>
 
-                  <p className="mt-2 text-sm leading-6 text-gray-600">
+                  <p className="mt-2 text-sm leading-6 text-text-muted">
                     {item.text}
                   </p>
                 </div>
@@ -187,15 +187,15 @@ export default function AboutPage() {
 
       <section className="py-8">
         <div className="mb-10 px-4 text-center sm:mb-14">
-          <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#d4a629] sm:text-lg sm:tracking-[0.35em]">
+          <p className="text-sm font-bold uppercase tracking-[0.28em] text-accent-gold sm:text-lg sm:tracking-[0.35em]">
             Testimonials
           </p>
 
-          <h2 className="mt-4 font-serif text-3xl font-bold text-[#164b57] md:text-6xl">
+          <h2 className="mt-4 font-serif text-3xl font-bold text-primary-teal md:text-6xl">
             What Our Clients Say
           </h2>
 
-          <div className="mx-auto mt-6 h-[3px] w-20 bg-[#d4a629]" />
+          <div className="mx-auto mt-6 h-[3px] w-20 bg-accent-gold" />
         </div>
 
         <div className="mx-auto max-w-7xl overflow-hidden px-4 pb-12 sm:px-6">
@@ -203,34 +203,34 @@ export default function AboutPage() {
             {[...testimonials, ...testimonials].map((item, i) => (
               <div
                 key={i}
-                className="relative w-[280px] shrink-0 rounded-[28px] border border-[#eadfca] bg-white p-5 shadow-sm sm:w-[320px] sm:rounded-[32px] sm:p-6 md:w-[420px]"
+                className="relative w-[280px] shrink-0 rounded-card border border-border-soft bg-white p-5 shadow-sm sm:w-[320px] sm:p-6 md:w-[420px] hover:border-accent-gold hover:-translate-y-1 hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-center gap-3 sm:gap-4">
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="h-14 w-14 rounded-full object-cover sm:h-16 sm:w-16"
+                    className="h-14 w-14 rounded-full object-cover sm:h-16 sm:w-16 border border-border-soft"
                   />
 
                   <div>
-                    <h3 className="text-lg font-bold text-[#164b57] sm:text-xl">
+                    <h3 className="text-lg font-serif font-bold text-primary-teal sm:text-xl">
                       {item.name}
                     </h3>
-                    <p className="text-sm text-gray-500">Traveller</p>
+                    <p className="text-sm text-text-muted">Traveller</p>
                   </div>
                 </div>
 
-                <div className="mt-4 flex gap-1 text-[#d4a629]">
+                <div className="mt-4 flex gap-1 text-accent-gold">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star key={star} size={18} fill="currentColor" />
                   ))}
                 </div>
 
-                <p className="mt-4 text-sm leading-6 text-gray-700 sm:text-base sm:leading-7">
-                  "{item.text}"
+                <p className="mt-4 text-sm leading-6 text-text-muted sm:text-base sm:leading-7">
+                  &ldquo;{item.text}&rdquo;
                 </p>
 
-                <div className="absolute right-5 top-5 text-[#d4a629]/25 sm:right-6 sm:top-6">
+                <div className="absolute right-5 top-5 text-accent-gold/20 sm:right-6 sm:top-6">
                   <Quote size={42} className="sm:h-12 sm:w-12" />
                 </div>
               </div>
@@ -239,22 +239,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="bg-[#f5efe6]">
+      <div className="bg-white border-y border-border-soft">
         <section className="mx-auto max-w-8xl px-4 py-10 pb-20 sm:px-6 sm:pb-24">
           <div className="mb-10">
             <div className="w-full text-center">
-              <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#d4a629] sm:text-lg sm:tracking-[0.35em]">
+              <p className="text-sm font-bold uppercase tracking-[0.28em] text-accent-gold sm:text-lg sm:tracking-[0.35em]">
                 Gallery
               </p>
 
-              <h2 className="mt-4 font-serif text-3xl font-bold text-[#164b57] md:text-5xl">
+              <h2 className="mt-4 font-serif text-3xl font-bold text-primary-teal md:text-5xl">
                 Memories From Our Journeys
               </h2>
 
-              <div className="mx-auto mt-6 h-[3px] w-20 bg-[#d4a629]" />
+              <div className="mx-auto mt-6 h-[3px] w-20 bg-accent-gold" />
             </div>
 {/* 
-            <div className="hidden rounded-full bg-white p-4 text-[#d4a629] shadow md:flex">
+            <div className="hidden rounded-full bg-white p-4 text-accent-gold shadow md:flex">
               <Camera size={30} />
             </div> */}
           </div>
@@ -264,7 +264,7 @@ export default function AboutPage() {
               {[...gallery, ...gallery].map((img, i) => (
                 <div
                   key={i}
-                  className="group relative h-[240px] w-[280px] shrink-0 overflow-hidden rounded-[28px] sm:h-[280px] sm:w-[320px] sm:rounded-[32px] md:h-[310px] md:w-[420px]"
+                  className="group relative h-[240px] w-[280px] shrink-0 overflow-hidden rounded-card sm:h-[280px] sm:w-[320px] md:h-[310px] md:w-[420px] border border-border-soft shadow-xs"
                 >
                   <img
                     src={img}
@@ -272,7 +272,7 @@ export default function AboutPage() {
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#164b57]/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-teal-dk/90 via-primary-teal-dk/30 to-transparent" />
 
                   <p className="absolute bottom-5 left-5 text-lg font-semibold text-white sm:text-xl">
                     Skyway Travel Moment

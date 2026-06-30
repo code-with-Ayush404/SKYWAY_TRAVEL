@@ -99,22 +99,28 @@ export default function Header() {
           {navLinks.map((link) => {
             if (link.name === "Tours") {
               return (
-                <div key={link.href} ref={toursDropdownRef} className="relative py-2">
-                  <button
-                    onClick={() => setIsToursDropdownOpen(!isToursDropdownOpen)}
-                    className={`text-sm font-medium tracking-wide transition-colors duration-200 hover:text-accent-gold flex items-center gap-1 cursor-pointer focus:outline-none ${
+                <div key={link.href} ref={toursDropdownRef} className="relative py-2 flex items-center gap-1">
+                  <Link
+                    href={link.href}
+                    className={`text-sm font-medium tracking-wide transition-colors duration-200 hover:text-accent-gold cursor-pointer ${
                       isActive(link.href)
                         ? "text-primary-teal border-b-2 border-accent-gold pb-0.5 font-semibold"
                         : "text-text-muted"
                     }`}
                   >
-                    <span>{link.name}</span>
-                    <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isToursDropdownOpen ? "rotate-180" : ""}`} />
+                    {link.name}
+                  </Link>
+                  <button
+                    onClick={() => setIsToursDropdownOpen(!isToursDropdownOpen)}
+                    className="text-text-muted hover:text-accent-gold focus:outline-none cursor-pointer flex items-center"
+                    aria-label="Toggle Tours Dropdown"
+                  >
+                    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isToursDropdownOpen ? "rotate-180" : ""}`} />
                   </button>
 
                   {/* Dropdown Menu */}
                   {isToursDropdownOpen && (
-                    <div className="absolute left-0 mt-3 w-64 bg-white border border-border-soft border-b-2 border-b-sky-500 rounded-md shadow-lg py-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200">
+                    <div className="absolute left-0 top-full mt-1 w-64 bg-white border border-border-soft border-b-2 border-b-sky-500 rounded-md shadow-lg py-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200">
                       {tourDropdownItems.map((item, index) => (
                         <Link
                           key={index}

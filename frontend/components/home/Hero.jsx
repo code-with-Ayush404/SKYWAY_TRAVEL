@@ -506,6 +506,7 @@ export default function Hero() {
         onSwiper={setSwiperInstance}
         modules={[Autoplay, EffectFade, Pagination, SwiperNavigation]}
         effect="fade"
+        fadeEffect={{ crossFade: true }}
         loop={true}
         speed={1000}
         autoplay={{

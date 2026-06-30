@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ShieldCheck, Clock, Calculator, ArrowRight } from "lucide-react";
+import { ShieldCheck, Clock, Calculator, ArrowRight, Car, UserCheck } from "lucide-react";
 import { toast } from "sonner";
 
 const vehicleTypes = [
@@ -9,6 +9,33 @@ const vehicleTypes = [
   { id: "comfort", name: "Comfort", icon: "🚙", pricePerKm: 16 },
   { id: "luxury", name: "Luxury", icon: "🚘", pricePerKm: 28 },
   { id: "van", name: "Group Van", icon: "🚐", pricePerKm: 22 },
+];
+
+const reasons = [
+  {
+    id: 1,
+    icon: <Clock className="h-6 w-6 text-accent-gold" />,
+    tag: "always on time",
+    title: "Punctual & Reliable",
+    desc: "We value your time. Our drivers arrive early and ensure safe, on-time arrivals for every single transfer.",
+    bgColor: "bg-amber-50",
+  },
+  {
+    id: 2,
+    icon: <UserCheck className="h-6 w-6 text-primary-teal" />,
+    tag: "professional drivers",
+    title: "Experienced & Verified",
+    desc: "Polite, licensed, and highly trained local drivers with deep knowledge of Gorakhpur, Nepal, and regional routes.",
+    bgColor: "bg-emerald-50",
+  },
+  {
+    id: 3,
+    icon: <Car className="h-6 w-6 text-[#1B4D5A]" />,
+    tag: "clean & comfortable fleet",
+    title: "Sanitized & Modern Vehicles",
+    desc: "Travel in pristine comfort with our fully air-conditioned, regularly serviced, and sanitized taxi fleet.",
+    bgColor: "bg-rose-50",
+  },
 ];
 
 export default function TaxiClient({ initialCars = [] }) {
@@ -108,122 +135,42 @@ export default function TaxiClient({ initialCars = [] }) {
             </div>
           </div>
 
-          <div className="lg:col-span-7 bg-bg-cream border border-border-soft rounded-card shadow-lg p-6 md:p-8">
-            <h3 className="font-serif text-lg md:text-xl font-bold text-primary-teal mb-4">
-              Select Vehicle Type & Route
-            </h3>
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <div className="flex flex-col gap-2">
+              <span className="small-caps-label">Why Choose Us</span>
+              <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary-teal leading-tight">
+                Why Choose Skyway Travel
+              </h2>
+            </div>
 
-            <form onSubmit={handleEstimateFare} className="flex flex-col gap-4">
-              <div className="grid grid-cols-2 gap-3">
-                {vehicleTypes.map((v) => (
-                  <button
-                    key={v.id}
-                    type="button"
-                    onClick={() => {
-                      setSelectedType(v.id);
-                      setEstimatedFare(null);
-                    }}
-                    className={`p-3 rounded-card text-left border ${
-                      selectedType === v.id
-                        ? "bg-white border-primary-teal ring-1 ring-primary-teal"
-                        : "bg-white/60 border-border-soft"
-                    }`}
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="text-xl">{v.icon}</span>
-                      <span className="text-[10px] font-bold text-primary-teal">
-                        from ₹{v.pricePerKm}/km
-                      </span>
-                    </div>
-
-                    <span className="font-semibold text-xs text-text-dark mt-1">
-                      {v.name}
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <input
-                  type="text"
-                  required
-                  value={pickup}
-                  onChange={(e) => setPickup(e.target.value)}
-                  placeholder="Pickup Location"
-                  className="px-3 py-2 bg-white border border-border-soft rounded-btn text-xs"
-                />
-
-                <input
-                  type="text"
-                  required
-                  value={drop}
-                  onChange={(e) => setDrop(e.target.value)}
-                  placeholder="Drop Location"
-                  className="px-3 py-2 bg-white border border-border-soft rounded-btn text-xs"
-                />
-              </div>
-
-              <div className="grid grid-cols-3 gap-3">
-                <input
-                  type="date"
-                  required
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="px-3 py-2 bg-white border border-border-soft rounded-btn text-xs"
-                />
-
-                <input
-                  type="time"
-                  required
-                  value={time} 
-                  onChange={(e) => setTime(e.target.value)}
-                  className="px-3 py-2 bg-white border border-border-soft rounded-btn text-xs"
-                />
-
-                <select
-                  value={passengers}
-                  onChange={(e) => setPassengers(e.target.value)}
-                  className="px-3 py-2 bg-white border border-border-soft rounded-btn text-xs"
+            <div className="flex flex-col gap-4">
+              {reasons.map((reason) => (
+                <div
+                  key={reason.id}
+                  className="bg-white border border-border-soft p-5 rounded-card shadow-sm hover:shadow-md hover:scale-[1.03] transition-all duration-300 flex items-start gap-4 text-left group"
                 >
-                  <option value="2">2 Persons</option>
-                  <option value="4">4 Persons</option>
-                  <option value="7">7 Persons</option>
-                  <option value="12">12 Persons</option>
-                </select>
-              </div>
-
-              {estimatedFare !== null && (
-                <div className="bg-white border p-4 rounded-card flex justify-between items-center">
-                  <div>
-                    <span className="text-xs text-text-muted">
-                      Estimated Fare
-                    </span>
-                    <p className="font-serif text-2xl font-bold text-primary-teal">
-                      ₹{estimatedFare}
-                    </p>
+                  <div
+                    className={`p-3 rounded-card w-12 h-12 shrink-0 flex items-center justify-center ${reason.bgColor} transition-transform group-hover:rotate-6 duration-300`}
+                  >
+                    {reason.icon}
                   </div>
 
-                  <a
-                    href={getWhatsAppLink()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-[#25D366] text-white text-xs font-semibold py-2.5 px-4 rounded-btn flex items-center gap-1.5"
-                  >
-                    Book via WhatsApp
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-              )}
+                  <div className="flex flex-col gap-1 flex-grow">
+                    <span className="text-[10px] uppercase tracking-wider font-bold text-accent-gold">
+                      {reason.tag}
+                    </span>
 
-              <button
-                type="submit"
-                disabled={isEstimating}
-                className="w-full bg-accent-gold text-white font-semibold py-3 rounded-btn text-sm flex items-center justify-center gap-2"
-              >
-                <Calculator className="h-4 w-4" />
-                {isEstimating ? "Estimating..." : "Estimate Fare"}
-              </button>
-            </form>
+                    <h3 className="font-serif text-base md:text-lg font-bold text-primary-teal group-hover:text-accent-gold transition-colors">
+                      {reason.title}
+                    </h3>
+
+                    <p className="text-xs text-text-muted leading-relaxed">
+                      {reason.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
