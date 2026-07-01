@@ -18,6 +18,9 @@ export default function Header() {
   const [adminUser, setAdminUser] = useState(null);
   const [isAdminDropdownOpen, setIsAdminDropdownOpen] = useState(false);
 
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
   const toursDropdownRef = useRef(null);
 
   useEffect(() => {
@@ -36,18 +39,28 @@ export default function Header() {
     const token = localStorage.getItem("adminToken");
     const role = localStorage.getItem("userRole");
     const storedUser = localStorage.getItem("user");
-    if (token && role === "ADMIN") {
-      setIsAdminLoggedIn(true);
-      if (storedUser) {
-        try {
-          setAdminUser(JSON.parse(storedUser));
-        } catch (e) {
-          console.error(e);
+    if (token && storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        if (role === "ADMIN") {
+          setIsAdminLoggedIn(true);
+          setAdminUser(parsedUser);
+          setIsUserLoggedIn(false);
+          setCurrentUser(null);
+        } else {
+          setIsAdminLoggedIn(false);
+          setAdminUser(null);
+          setIsUserLoggedIn(true);
+          setCurrentUser(parsedUser);
         }
+      } catch (e) {
+        console.error(e);
       }
     } else {
       setIsAdminLoggedIn(false);
       setAdminUser(null);
+      setIsUserLoggedIn(false);
+      setCurrentUser(null);
     }
   }, [pathname]);
 
@@ -84,6 +97,15 @@ export default function Header() {
     { name: "View More", href: "/tour-packages" },
   ];
 
+  const getInitials = (name) => {
+    if (!name) return "U";
+    const parts = name.trim().split(/\s+/);
+    if (parts.length === 1) {
+      return parts[0].substring(0, 2).toUpperCase();
+    }
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
+
   const handleLogout = () => {
     signOut({ callbackUrl: "/" });
   };
@@ -96,6 +118,19 @@ export default function Header() {
     setAdminUser(null);
     setIsAdminDropdownOpen(false);
     router.push("/");
+  };
+
+  const handleUserLogout = () => {
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("userRole");
+    localStorage.removeItem("user");
+    setIsUserLoggedIn(false);
+    setCurrentUser(null);
+    if (session) {
+      signOut({ callbackUrl: "/" });
+    } else {
+      router.push("/");
+    }
   };
 
   const isActive = (href) => {
@@ -232,32 +267,28 @@ export default function Header() {
                 </div>
               )}
             </div>
-          ) : session ? (
-            <div className="relative">
-              <button
-                onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
-                className="flex items-center gap-2 px-4 py-2 border border-border-soft hover:border-primary-teal rounded-btn text-primary-teal font-medium text-sm transition-colors duration-200"
-              >
-                <User className="h-4 w-4" />
-                <span>{session.user?.name || "My Account"}</span>
-              </button>
-              {isUserDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border border-border-soft rounded-card shadow-lg py-2 z-50">
+          ) : (session || isUserLoggedIn) ? (
+            <div className="relative group">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-teal hover:bg-primary-teal-dk text-white font-bold text-sm tracking-wide shadow-sm border border-primary-teal-dk select-none cursor-pointer transition-all duration-200">
+                {getInitials(session?.user?.name || currentUser?.name || currentUser?.email)}
+              </div>
+              <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="w-48 bg-white border border-border-soft rounded-card shadow-lg py-2">
                   <div className="px-4 py-2 border-b border-border-soft text-xs text-text-muted">
-                    Signed in as{" "}
+                    Signed in as
                     <p className="font-semibold text-text-dark truncate">
-                      {session.user?.email}
+                      {session?.user?.email || currentUser?.email}
                     </p>
                   </div>
                   <button
-                    onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-bg-cream flex items-center gap-2 transition-colors duration-200"
+                    onClick={handleUserLogout}
+                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-bg-cream flex items-center gap-2 transition-colors duration-200 cursor-pointer font-medium"
                   >
                     <LogOut className="h-4 w-4" />
-                    <span>Sign Out</span>
+                    <span>Logout</span>
                   </button>
                 </div>
-              )}
+              </div>
             </div>
           ) : (
             <Link
@@ -340,20 +371,25 @@ export default function Header() {
                   Logout
                 </button>
               </div>
-            ) : session ? (
+            ) : (session || isUserLoggedIn) ? (
               <div className="flex flex-col gap-2">
-                <div className="text-xs text-text-muted px-2">
-                  Signed in as{" "}
-                  <span className="font-semibold text-text-dark">
-                    {session.user?.email}
-                  </span>
+                <div className="flex items-center gap-3 px-2 py-1">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-teal text-white font-bold text-sm tracking-wide border border-primary-teal-dk select-none">
+                    {getInitials(session?.user?.name || currentUser?.name || currentUser?.email)}
+                  </div>
+                  <div className="text-xs text-text-muted">
+                    Signed in as
+                    <span className="font-semibold text-text-dark block truncate">
+                      {session?.user?.email || currentUser?.email}
+                    </span>
+                  </div>
                 </div>
                 <button
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    handleLogout();
+                    handleUserLogout();
                   }}
-                  className="w-full text-center py-2.5 border border-red-200 text-red-600 rounded-btn hover:bg-red-50 text-sm font-semibold flex items-center justify-center gap-2"
+                  className="w-full text-center py-2.5 border border-red-200 text-red-600 rounded-btn hover:bg-red-50 text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <LogOut className="h-4 w-4" />
                   Sign Out
