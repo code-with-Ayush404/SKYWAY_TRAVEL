@@ -21,8 +21,8 @@ export default function Footer() {
         
         {/* Col 1: Brand & Desc (4 cols on lg) */}
         <div className="lg:col-span-4 flex flex-col gap-6 text-left">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="bg-primary-teal text-white p-2 rounded-btn">
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="bg-primary-teal text-white p-2 rounded-btn transition-transform group-hover:-rotate-12 duration-300">
               <Plane className="h-5 w-5 rotate-45 text-accent-gold" />
             </div>
             <span className="font-serif text-2xl font-bold tracking-tight text-white">

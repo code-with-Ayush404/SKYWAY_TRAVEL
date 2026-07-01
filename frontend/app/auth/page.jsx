@@ -168,7 +168,7 @@ function AuthContent() {
     <div className="min-h-[80vh] flex items-center justify-center px-6 py-16 bg-bg-cream">
       <div className="w-full max-w-md bg-white border border-border-soft rounded-card shadow-lg overflow-hidden p-8 flex flex-col gap-6">
         <div className="flex flex-col items-center text-center gap-2">
-          <div className="bg-primary-teal text-white p-3 rounded-btn animate-bounce">
+          <div className="bg-primary-teal text-white p-3 rounded-btn animate-bounce hover:-rotate-12 transition-transform duration-300">
             <Plane className="h-6 w-6 rotate-45 text-accent-gold" />
           </div>
 

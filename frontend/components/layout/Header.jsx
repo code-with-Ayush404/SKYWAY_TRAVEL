@@ -153,7 +153,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="bg-primary-teal text-white p-2 rounded-btn transition-transform group-hover:rotate-12 duration-300">
+          <div className="bg-primary-teal text-white p-2 rounded-btn transition-transform group-hover:-rotate-12 duration-300">
             <Plane className="h-5 w-5 rotate-45" />
           </div>
           <span className="font-serif text-xl md:text-2xl font-bold tracking-tight text-primary-teal flex items-center gap-1">
