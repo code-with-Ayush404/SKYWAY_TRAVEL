@@ -681,6 +681,8 @@ export default function AdminPage() {
   const [formData, setFormData] = useState(emptyTour);
   const [editingId, setEditingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   const authConfig = useCallback(
     (authToken = token) => ({
@@ -914,12 +916,18 @@ outStation:
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
+    setItemToDelete(id);
+    setDeleteModalOpen(true);
+  };
+
+  const executeDelete = async () => {
+    if (!itemToDelete) return;
     try {
       if (activeTab === "tours") {
-        await axios.delete(`${API_URL}/admin/tours/${id}`, authConfig());
+        await axios.delete(`${API_URL}/admin/tours/${itemToDelete}`, authConfig());
       } else {
-        await axios.delete(`${API_URL}/admin/vehicles/${id}`, authConfig());
+        await axios.delete(`${API_URL}/admin/vehicles/${itemToDelete}`, authConfig());
       }
 
       toast.success("Deleted successfully");
@@ -927,6 +935,9 @@ outStation:
     } catch (error) {
       console.error(error);
       toast.error("Delete failed");
+    } finally {
+      setDeleteModalOpen(false);
+      setItemToDelete(null);
     }
   };
 
@@ -1580,6 +1591,36 @@ Add New {activeTab === "tours" ? "Tour Package" : activeTab === "wedding" ? "Wed
           )}
         </div>
       </main>
+
+      {deleteModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 backdrop-blur-xs transition-opacity duration-200">
+          <div className="bg-white rounded-card border border-border-soft p-6 max-w-sm w-full mx-4 shadow-2xl animate-in zoom-in-95 duration-200 text-left">
+            <h3 className="text-lg font-serif font-bold text-primary-teal mb-2">Confirm Deletion</h3>
+            <p className="text-sm text-text-muted mb-6 leading-relaxed">
+              Are you sure you want to delete this {activeTab === "tours" ? "tour package" : activeTab === "wedding" ? "wedding car" : "vehicle"}?
+            </p>
+            <div className="flex justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setDeleteModalOpen(false);
+                  setItemToDelete(null);
+                }}
+                className="px-4 py-2 border border-border-soft rounded-btn text-text-dark bg-white hover:bg-bg-cream transition-colors text-sm font-semibold cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={executeDelete}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-btn transition-colors text-sm font-semibold cursor-pointer"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
